@@ -1,0 +1,113 @@
+package com.mygdx.game;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Align;
+
+
+public class MainMenu {
+    private SpriteBatch batch;
+    private BitmapFont font;
+    private OrthographicCamera camera;
+    private int selectedOptions = 1; // Default to 1 player
+    private static final int number_of_options = 5;
+
+    public MainMenu() {
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+        font.setColor(Color.WHITE);
+        font.getData().setScale(2);
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(false);
+    }
+
+    public void render() {
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
+
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        batch.begin();
+        font.draw(batch, "Main Menu", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 9/10, 0, Align.center, false);
+        font.draw(batch, "Press ENTER to start the game", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 8/10, 0, Align.center, false);
+        // Opcje menu
+        for (int i = 1; i <= number_of_options; i++) {
+            if (selectedOptions == i) {
+                switch (i) {
+                    case 1:
+                        font.setColor(Color.RED);
+                        break;
+                    case 2:
+                        font.setColor(Color.GREEN);
+                        break;
+                    case 3:
+                        font.setColor(Color.BLUE);
+                        break;
+                    case 4:
+                        font.setColor(Color.YELLOW);
+                        break;
+                    case 5:
+                        font.setColor(Color.ORANGE);
+                        break;
+                }
+            } else {
+                font.setColor(Color.WHITE);
+            }
+        // Wypisywanie opcji menu
+        switch (i) {
+            case 1:
+                font.draw(batch, "1 player", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                break;
+            case 2:
+                font.draw(batch, "2 players", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                break;
+            case 3:
+                font.draw(batch, "Options", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                break;
+            case 4:
+                font.draw(batch, "Score", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                break;
+            case 5:
+                font.draw(batch, "Quit", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                break;
+        }
+    }
+        font.setColor(Color.WHITE); // Domyślny kolor dla innych opcji
+
+        batch.end();
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            switch (selectedOptions) {
+                case 1:
+                case 2:
+                case 4:
+                    GameManager.getInstance().startGame(selectedOptions);
+                    break;
+                case 3:
+                    GameManager.getInstance().gameMenu = false;
+                    break;
+                case 5:
+                    Gdx.app.exit(); // Zamknij aplikację, jeśli wybrano opcję Quit
+                    break;
+            }
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            selectedOptions = (selectedOptions % number_of_options) + 1; // Przejście do kolejnej opcji, zachowując się cyklicznie
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            selectedOptions = ((selectedOptions - 2 + number_of_options) % number_of_options) + 1; // Przejście do poprzedniej opcji, zachowując się cyklicznie
+        }
+    }
+
+    public void dispose() {
+        batch.dispose();
+        font.dispose();
+    }
+}
