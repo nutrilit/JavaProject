@@ -15,7 +15,7 @@ public class MainMenu {
     private BitmapFont font;
     private OrthographicCamera camera;
     private int selectedOptions = 1; // Default to 1 player
-    private static final int number_of_options = 5;
+    private static final int number_of_options = 7;
 
     public MainMenu() {
         batch = new SpriteBatch();
@@ -55,6 +55,12 @@ public class MainMenu {
                     case 5:
                         font.setColor(Color.ORANGE);
                         break;
+                    case 6:
+                        font.setColor(Color.BLUE);
+                        break;
+                    case 7:
+                        font.setColor(Color.YELLOW);
+                        break;
                 }
             } else {
                 font.setColor(Color.WHITE);
@@ -62,19 +68,25 @@ public class MainMenu {
         // Wypisywanie opcji menu
         switch (i) {
             case 1:
-                font.draw(batch, "1 player", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                font.draw(batch, "1 player", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
                 break;
             case 2:
-                font.draw(batch, "2 players", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                font.draw(batch, "2 players", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
                 break;
             case 3:
-                font.draw(batch, "Options", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                font.draw(batch, "Options", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
                 break;
             case 4:
-                font.draw(batch, "Score", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                font.draw(batch, "Score", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
                 break;
             case 5:
-                font.draw(batch, "Quit", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (6 - i)/10f, 0, Align.center, false);
+                font.draw(batch, "Quit", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
+                break;
+            case 6:
+                font.draw(batch, "Help", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
+                break;
+            case 7:
+                font.draw(batch, "Copyright", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
                 break;
         }
     }
@@ -95,6 +107,7 @@ public class MainMenu {
                 case 5:
                     Gdx.app.exit(); // Zamknij aplikację, jeśli wybrano opcję Quit
                     break;
+                case 6:
             }
         }
 
