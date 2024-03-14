@@ -60,15 +60,15 @@ public class OptionsScreen {
         int screenHeight = Gdx.graphics.getHeight();
 
         float textX = screenWidth / 2; // Początkowe położenie tekstu X
-        float textY = screenHeight * 9/10; // Początkowe położenie tekstu Y
+        float textY = screenHeight * 0.9f; // Początkowe położenie tekstu Y
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        font.draw(batch, "Current Resolution: " + screenWidth + "x" + screenHeight, screenWidth / 2, screenHeight * 8/10, 0, Align.center, false);
+        font.draw(batch, "Current Resolution: " + screenWidth + "x" + screenHeight, screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
         font.draw(batch, "Options Screen", textX, textY, 0, Align.center, false);
-        font.draw(batch, "Press ENTER to go back to main menu", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 7/10, 0, Align.center, false);
-        font.draw(batch, "Press UP/DOWN to change resolution: " + resolutions[currentResolutionIndex], Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 6/10, 0, Align.center, false);
-
+        font.draw(batch, "Press ENTER to go back to main menu", screenWidth / 2, screenHeight * 0.7f, 0, Align.center, false);
+        font.draw(batch, "Press UP/DOWN to change resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.6f, 0, Align.center, false);
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
@@ -86,8 +86,8 @@ public class OptionsScreen {
             saveResolutionToFile(); // Zapisz nową rozdzielczość po zmianie
             updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
         }
-
     }
+
 
     private void cycleResolution(boolean increment) {
         if (increment) {

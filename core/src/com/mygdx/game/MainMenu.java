@@ -25,17 +25,7 @@ public class MainMenu {
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
     }
-
-    public void render() {
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
-
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        batch.begin();
-        font.draw(batch, "Main Menu", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 9/10, 0, Align.center, false);
-        font.draw(batch, "Press ENTER to start the game", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 8/10, 0, Align.center, false);
+    public void opcje_menu() {
         // Opcje menu
         for (int i = 1; i <= number_of_options; i++) {
             if (selectedOptions == i) {
@@ -56,44 +46,43 @@ public class MainMenu {
                         font.setColor(Color.ORANGE);
                         break;
                     case 6:
-                        font.setColor(Color.BLUE);
+                        font.setColor(Color.FIREBRICK);
                         break;
                     case 7:
-                        font.setColor(Color.YELLOW);
+                        font.setColor(Color.MAGENTA);
                         break;
                 }
             } else {
                 font.setColor(Color.WHITE);
             }
-        // Wypisywanie opcji menu
-        switch (i) {
-            case 1:
-                font.draw(batch, "1 player", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
-                break;
-            case 2:
-                font.draw(batch, "2 players", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
-                break;
-            case 3:
-                font.draw(batch, "Options", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
-                break;
-            case 4:
-                font.draw(batch, "Score", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
-                break;
-            case 5:
-                font.draw(batch, "Quit", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
-                break;
-            case 6:
-                font.draw(batch, "Help", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
-                break;
-            case 7:
-                font.draw(batch, "Copyright", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i)/10f, 0, Align.center, false);
-                break;
+            // Wypisywanie opcji menu
+            switch (i) {
+                case 1:
+                    font.draw(batch, "1 player", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i) / 10f, 0, Align.center, false);
+                    break;
+                case 2:
+                    font.draw(batch, "2 players", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i) / 10f, 0, Align.center, false);
+                    break;
+                case 3:
+                    font.draw(batch, "Options", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i) / 10f, 0, Align.center, false);
+                    break;
+                case 4:
+                    font.draw(batch, "Score", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i) / 10f, 0, Align.center, false);
+                    break;
+                case 5:
+                    font.draw(batch, "Quit", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i) / 10f, 0, Align.center, false);
+                    break;
+                case 6:
+                    font.draw(batch, "Help", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i) / 10f, 0, Align.center, false);
+                    break;
+                case 7:
+                    font.draw(batch, "Copyright", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * (8 - i) / 10f, 0, Align.center, false);
+                    break;
+            }
+            font.setColor(Color.WHITE); // Domyślny kolor dla innych opcji
         }
     }
-        font.setColor(Color.WHITE); // Domyślny kolor dla innych opcji
-
-        batch.end();
-
+    public void obsluga_klaw(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             switch (selectedOptions) {
                 case 1:
@@ -118,6 +107,23 @@ public class MainMenu {
             selectedOptions = ((selectedOptions - 2 + number_of_options) % number_of_options) + 1; // Przejście do poprzedniej opcji, zachowując się cyklicznie
         }
     }
+
+    public void render() {
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
+
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        batch.begin();
+        font.draw(batch, "Main Menu", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 9/10, 0, Align.center, false);
+        font.draw(batch, "Press ENTER to start the game", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 8/10, 0, Align.center, false);
+        opcje_menu();
+        batch.end();
+        obsluga_klaw();
+
+    }
+
 
     public void dispose() {
         batch.dispose();
