@@ -13,7 +13,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import jdk.javadoc.internal.doclets.formats.html.Table;
 
 public class OptionsScreen {
     private SpriteBatch batch;
@@ -24,7 +23,6 @@ public class OptionsScreen {
     private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720"};
     private int currentResolutionIndex = 0;
     private Stage stage;
-    private Table table;
 
     public OptionsScreen() {
         batch = new SpriteBatch();

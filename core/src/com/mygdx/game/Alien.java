@@ -11,6 +11,7 @@ public class Alien {
     public Sprite sprite;
     public Boolean alive;
     public int lives;
+    public int type;
     public Alien(Vector2 _position, Texture alien, int type)
     {
         pos = _position;
@@ -18,6 +19,7 @@ public class Alien {
         sprite = new Sprite(alien);
         sprite.setScale(4);
         this.alive = true;
+        type=type;
         switch (type){
             case 1: this.lives=1; break;
             case 2:this.lives=2; break;

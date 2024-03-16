@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Enemies {
     Alien[] aliens;
     float tmpPosX=10000;
@@ -23,13 +26,15 @@ public class Enemies {
     int currType=1;
     Texture[] textures = new Texture[4];
 
+    public List<Ammunition> ammunitions;
+
     public Enemies(Texture img)
     {
         alien_move = Vector2.Zero;
         aliens = new Alien[With_aliens*Height_aliens];
         alien_alive_amount = aliens.length;
         int i=0;
-
+        ammunitions = new ArrayList<>();
         for(int y=0; y<Height_aliens;y++)
         {
             for(int x=0; x<With_aliens;x++)
@@ -72,6 +77,11 @@ public class Enemies {
                     {
                     /*for(int ii=0;ii<aliens.length;ii++) //zabijanie wszyskich
                         aliens[ii].alive=false;*/
+
+                                Texture ammoTexture = new Texture("pierce_ammo.png");
+                                Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
+                                ammunitions.add(ammo);
+
                         bulletKill(bullet,i);
 /*                    bullet.active=false;
                     aliens[i].lives--;*/
@@ -171,6 +181,12 @@ public class Enemies {
     }
     public void Update(float deltaTime,SpriteBatch batch) {
         AlienMovement(deltaTime,batch);
+        for (Ammunition ammunition : ammunitions) {
+            ammunition.Update(deltaTime);
+        }
+        for (Ammunition ammunition : ammunitions) {
+            ammunition.Update(deltaTime);
+        }
     }
     public void Draw(SpriteBatch batch)
     {
@@ -184,6 +200,9 @@ public class Enemies {
                 }
                 i++;
             }
+        }
+        for (Ammunition ammunition : ammunitions) {
+            ammunition.Draw(batch);
         }
     }
 

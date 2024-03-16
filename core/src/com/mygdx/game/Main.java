@@ -2,9 +2,16 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
+import javax.swing.text.View;
 
 
 public class Main extends ApplicationAdapter {
@@ -18,8 +25,7 @@ public class Main extends ApplicationAdapter {
 	Enemies enemies;
 
 	//Alien a1;
-	//public Vector2 pos;
-
+	//public Vector2 pos
 
 	@Override
 	public void create () {

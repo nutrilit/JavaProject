@@ -104,7 +104,7 @@ public class Player {
 
     private void fire() {
         // Tworzenie nowego pocisku i dodawanie go do listy
-        Texture bulletTexture = new Texture("bullet1.png");;
+        Texture bulletTexture = new Texture("bullet1.png");
         switch(currentWeapon){
             case 1:
                 bulletTexture = new Texture("bullet1.png");
