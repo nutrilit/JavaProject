@@ -78,9 +78,9 @@ public class Enemies {
                     /*for(int ii=0;ii<aliens.length;ii++) //zabijanie wszyskich
                         aliens[ii].alive=false;*/
 
-                                Texture ammoTexture = new Texture("pierce_ammo.png");
+                                /*Texture ammoTexture = new Texture("pierce_ammo.png");
                                 Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
-                                ammunitions.add(ammo);
+                                ammunitions.add(ammo);*/
 
                         bulletKill(bullet,i);
 /*                    bullet.active=false;
@@ -92,6 +92,7 @@ public class Enemies {
                 }
             }
     }
+
     void bulletKill(Bullet bullet,int i)
     {
         switch(bullet.type) {
@@ -99,6 +100,10 @@ public class Enemies {
             {
                 bullet.active=false;
                 aliens[i].lives--;
+
+                Texture ammoTexture = new Texture("pierce_ammo.png");
+                Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
+                ammunitions.add(ammo);
             }
             break;
             case 2:
@@ -202,6 +207,7 @@ public class Enemies {
             }
         }
         for (Ammunition ammunition : ammunitions) {
+            if(ammunition.isactive==true)
             ammunition.Draw(batch);
         }
     }

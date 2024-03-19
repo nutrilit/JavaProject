@@ -1,17 +1,21 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.utils.Align;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
     public int playerType;
+    private BitmapFont font;
     public Vector2 pos;
     public Sprite sprite;
     public List<Bullet> bullets;
@@ -23,6 +27,9 @@ public class Player {
     private int currentWeapon;
 
     public Player(Texture img,int type) {
+        font = new BitmapFont();
+        font.setColor(Color.WHITE);
+        font.getData().setScale(2);
         sprite = new Sprite(img);
         sprite.setScale(4);
         pos = new Vector2(Gdx.graphics.getWidth() / 2, sprite.getScaleY() * sprite.getHeight() / 2);
@@ -88,13 +95,37 @@ public class Player {
     public void removeBullets()
     {
         for (Bullet bullet : bullets) {
-            bullet.active=false;
+            if(bullet.position.y<=0) {
+                bullet.active = false;
+                bullets.remove(bullet);
+            }
+        }
+    }
+    public void checkAmmoDrop(List<Ammunition> ammunitions)
+    {
+        for(Ammunition ammunition: ammunitions)
+        {
+            if(ammunition.sprite.getBoundingRectangle().overlaps(this.sprite.getBoundingRectangle()))
+            {
+               if(ammunition.isactive==true) {
+                   switch (ammunition.type) {
+                       case 1:
+                           this.ammoPierce++;
+                           break;
+                       case 2:
+                           this.ammoCluster++;
+                           break;
+                   }
+               }
+                ammunition.isactive=false;
+            }
         }
     }
     public void Draw(SpriteBatch batch) {
         update(Gdx.graphics.getDeltaTime());
         sprite.setPosition(pos.x, pos.y);
         sprite.draw(batch);
+        font.draw(batch, "Type:"+this.currentWeapon, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 9/10, 0, Align.center, false);
         // Draw bullets
         for (Bullet bullet : bullets) {
             bullet.draw(batch);
@@ -110,10 +141,20 @@ public class Player {
                 bulletTexture = new Texture("bullet1.png");
                 break;
             case  2:
-                bulletTexture = new Texture("pierce-shot.png");
+                if(this.ammoPierce>0) {
+                    bulletTexture = new Texture("pierce-shot.png");
+                    this.ammoPierce--;
+                    break;
+                }
+                else currentWeapon = 1;
                 break;
             case 3:
-                bulletTexture = new Texture("cluster-bullet.png");
+                if(this.ammoCluster>0) {
+                    bulletTexture = new Texture("cluster-bullet.png");
+                    this.ammoCluster--;
+                    break;
+                }
+                else currentWeapon = 1;
                 break;
         }
         Vector2 bulletPosition = new Vector2(pos.x, pos.y + sprite.getHeight());

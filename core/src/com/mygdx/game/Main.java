@@ -60,9 +60,12 @@ public class Main extends ApplicationAdapter {
 			// Jeśli gra została rozpoczęta, renderuj grę
 			batch.begin();
 			player.Draw(batch);
+			player.checkAmmoDrop(enemies.ammunitions);
 			if (GameManager.getInstance().getNumberOfPlayers() == 2) {
 				player2.Draw(batch);
+				player2.checkAmmoDrop(enemies.ammunitions);
 			}
+			System.out.println(player.ammoPierce);
 			enemies.Draw(batch);
 			for (Bullet bullet : player.bullets) {
 				/*if(enemies.alien_alive_amount==0)

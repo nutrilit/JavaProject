@@ -11,6 +11,7 @@ public class Ammunition {
     public Sprite sprite;
     public float speed=500;
     int type;
+    public boolean isactive;
 
     public Ammunition(Texture img, int type,Vector2 pos)
     {
@@ -18,6 +19,7 @@ public class Ammunition {
         sprite.setScale(4);
         this.type = type;
         this.pos = pos;
+        isactive = true;
     }
     public void setPos(float x,float y)
     {
