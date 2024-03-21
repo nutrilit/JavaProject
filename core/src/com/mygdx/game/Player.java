@@ -25,6 +25,9 @@ public class Player {
     public float fireRate = 0.2f; // czas (w sekundach) między kolejnymi strzałami
     private float fireTimer = 0; // licznik czasu od ostatniego strzału
     private int currentWeapon;
+    private int lives=1;
+    private  int score;
+    private boolean isAlive;
 
     public Player(Texture img,int type) {
         font = new BitmapFont();
@@ -36,6 +39,9 @@ public class Player {
         bullets = new ArrayList<>(); // Initialize bullets list
         this.playerType=type;
         this.currentWeapon=1;
+        this.lives=3;
+        this.isAlive=true;
+        this.score=0;
     }
 
     void playerMovement(float deltaTime) {
@@ -107,16 +113,16 @@ public class Player {
         {
             if(ammunition.sprite.getBoundingRectangle().overlaps(this.sprite.getBoundingRectangle()))
             {
-               if(ammunition.isactive==true) {
-                   switch (ammunition.type) {
-                       case 1:
-                           this.ammoPierce++;
-                           break;
-                       case 2:
-                           this.ammoCluster++;
-                           break;
-                   }
-               }
+                if(ammunition.isactive==true) {
+                    switch (ammunition.type) {
+                        case 1:
+                            this.ammoPierce++;
+                            break;
+                        case 2:
+                            this.ammoCluster++;
+                            break;
+                    }
+                }
                 ammunition.isactive=false;
             }
         }
@@ -125,12 +131,18 @@ public class Player {
         update(Gdx.graphics.getDeltaTime());
         sprite.setPosition(pos.x, pos.y);
         sprite.draw(batch);
-        font.draw(batch, "Type:"+this.currentWeapon, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 9/10, 0, Align.center, false);
+        //font.draw(batch, "Type:"+this.currentWeapon, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 9/10, 0, Align.center, false);
         // Draw bullets
         for (Bullet bullet : bullets) {
             bullet.draw(batch);
         }
         //bullets.removeIf(bullet -> bullet.position.y < 0);
+        if(playerType==1){
+            font.draw(batch, "Lives Player1: " + lives, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight()/2, 0, Align.right, false);
+        }
+        else{
+            font.draw(batch, "Lives Player2: " + lives, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight()/2-(int)(Gdx.graphics.getHeight()*0.05), 0, Align.right, false);
+        }
     }
 
     private void fire() {

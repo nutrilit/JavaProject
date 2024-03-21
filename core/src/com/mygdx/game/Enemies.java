@@ -1,9 +1,12 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Align;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +27,9 @@ public class Enemies {
     Vector2 alien_move;
     int alien_alive_amount;
     int currType=1;
+    public int score=0;
     Texture[] textures = new Texture[4];
-
+    private BitmapFont font;
     public List<Ammunition> ammunitions;
 
     public Enemies(Texture img)
@@ -48,6 +52,9 @@ public class Enemies {
                 i++;
             }
         }
+        font = new BitmapFont();
+        font.setColor(Color.WHITE);
+        font.getData().setScale(2);
     }
     void EnemyReinforcements(Texture img,int type)
     {
@@ -81,7 +88,7 @@ public class Enemies {
                                 /*Texture ammoTexture = new Texture("pierce_ammo.png");
                                 Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
                                 ammunitions.add(ammo);*/
-
+                        score++;
                         bulletKill(bullet,i);
 /*                    bullet.active=false;
                     aliens[i].lives--;*/
@@ -206,9 +213,10 @@ public class Enemies {
                 i++;
             }
         }
+        font.draw(batch, "Score: " + score, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight()/2+(int)(Gdx.graphics.getHeight()*0.10), 0, Align.right, false);
         for (Ammunition ammunition : ammunitions) {
             if(ammunition.isactive==true)
-            ammunition.Draw(batch);
+                ammunition.Draw(batch);
         }
     }
 
