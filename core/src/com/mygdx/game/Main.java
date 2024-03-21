@@ -61,9 +61,12 @@ public class Main extends ApplicationAdapter {
 			batch.begin();
 			player.Draw(batch);
 			player.checkAmmoDrop(enemies.ammunitions);
+			enemies.CheckPlayerCollision(player);
+			enemies.CheckEndOfMap();
 			if (GameManager.getInstance().getNumberOfPlayers() == 2) {
 				player2.Draw(batch);
 				player2.checkAmmoDrop(enemies.ammunitions);
+				enemies.CheckPlayerCollision(player2);
 			}
 			System.out.println(player.ammoPierce);
 			enemies.Draw(batch);

@@ -73,6 +73,27 @@ public class Enemies {
             }
         }
     }
+    void CheckPlayerCollision(Player player)
+    {
+        for(int i=0;i<aliens.length;i++)
+        {
+            if(aliens[i].alive==true) {
+                if(player.sprite.getBoundingRectangle().overlaps(aliens[i].sprite.getBoundingRectangle()))
+                {
+                    Gdx.app.exit();
+                }
+            }
+        }
+    }
+    void CheckEndOfMap()
+    {
+        for(int i=0;i<aliens.length;i++)
+        {
+            if(aliens[i].alive==true && aliens[i].pos.y<0) {
+                Gdx.app.exit();
+            }
+        }
+    }
     void CheckCollision(Bullet bullet)
     {
         if(bullet.active==true)
