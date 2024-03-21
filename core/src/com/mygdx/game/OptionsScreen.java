@@ -69,8 +69,8 @@ public class OptionsScreen {
         font.draw(batch, "Press UP/DOWN to change resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.6f, 0, Align.center, false);
         batch.end();
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            GameManager.getInstance().gameMenu = true; // Powrót do menu głównego po naciśnięciu ENTER
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            GameManager.getInstance().gameState = GameManager.GameState.MAIN_MENU;
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {

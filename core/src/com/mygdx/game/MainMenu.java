@@ -23,7 +23,6 @@ public class MainMenu {
     public MainMenu() {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
-
         font.setColor(Color.WHITE);
         font.getData().setScale(2);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -77,6 +76,7 @@ public class MainMenu {
         }
     }
     public void obsluga_klaw(){
+       //System.out.println(GameManager.getInstance().gameState);
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             switch (selectedOptions) {
                 case 1:
@@ -84,14 +84,20 @@ public class MainMenu {
                     GameManager.getInstance().startGame(selectedOptions);
                     break;
                 case 3:
-                    GameManager.getInstance().gameMenu = false;
+                    GameManager.getInstance().gameState = GameManager.GameState.OPTIONS;
                     break;
                 case 4:
+                    GameManager.getInstance().gameState = GameManager.GameState.SCORE;
                     break;
                 case 5:
                     Gdx.app.exit(); // Zamknij aplikację, jeśli wybrano opcję Quit
                     break;
                 case 6:
+                    GameManager.getInstance().gameState = GameManager.GameState.HELP;
+                    break;
+                case 7:
+                    GameManager.getInstance().gameState = GameManager.GameState.COPYRIGHT;
+                    break;
             }
         }
 
