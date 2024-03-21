@@ -22,7 +22,8 @@ public class MainMenu {
 
     public MainMenu() {
         batch = new SpriteBatch();
-        font = new BitmapFont();
+        font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
+
         font.setColor(Color.WHITE);
         font.getData().setScale(2);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -30,34 +31,23 @@ public class MainMenu {
         backgroundTexture = new Texture("background.png"); // Adjust the path to your background image
     }
     public void opcje_menu() {
+        Color lightBlueWithGlow = new Color(0.4f, 0.7f, 1, 0.5f);
         // Opcje menu
         for (int i = 1; i <= number_of_options; i++) {
             if (selectedOptions == i) {
                 switch (i) {
                     case 1:
-                        font.setColor(Color.RED);
-                        break;
                     case 2:
-                        font.setColor(Color.GREEN);
-                        break;
                     case 3:
-                        font.setColor(Color.BLUE);
-                        break;
                     case 4:
-                        font.setColor(Color.YELLOW);
-                        break;
                     case 5:
-                        font.setColor(Color.ORANGE);
-                        break;
                     case 6:
-                        font.setColor(Color.FIREBRICK);
-                        break;
                     case 7:
-                        font.setColor(Color.MAGENTA);
+                        font.setColor(Color.YELLOW);
                         break;
                 }
             } else {
-                font.setColor(Color.WHITE);
+                font.setColor(lightBlueWithGlow);
             }
             // Wypisywanie opcji menu
             switch (i) {
