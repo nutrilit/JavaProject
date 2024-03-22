@@ -81,6 +81,7 @@ public class MainMenu {
             switch (selectedOptions) {
                 case 1:
                 case 2:
+                    GameManager.getInstance().gameState= GameManager.GameState.STARTGAME;
                     GameManager.getInstance().startGame(selectedOptions);
                     break;
                 case 3:

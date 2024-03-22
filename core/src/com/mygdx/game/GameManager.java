@@ -15,7 +15,7 @@ public class GameManager {
     public boolean gameMenu;
     private int numberOfPlayers;
     public enum GameState {
-        MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT;
+        MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE;
     }
     public GameState gameState;
 
@@ -75,8 +75,9 @@ public class GameManager {
     }
 
     public void startGame(int numberOfPlayers) {
-        gameStarted = true;
-        gameMenu = false; // Po rozpoczęciu gry, nie chcemy być w menu
+        //gameStarted = true;
+        //gameMenu = false; // Po rozpoczęciu gry, nie chcemy być w menu
+        gameState = GameState.STARTGAME;
         this.numberOfPlayers = numberOfPlayers;
     }
 

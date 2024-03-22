@@ -24,6 +24,7 @@ public class Main extends ApplicationAdapter {
 	Player player;
 	Player player2;
 	Enemies enemies;
+	GameScreen gameScreen;
 
 	//Alien a1;
 	//public Vector2 pos
@@ -48,6 +49,7 @@ public class Main extends ApplicationAdapter {
 		enemies.textures[2] = new Texture("xenomorphv1.0.png");
 		enemies.textures[3] = new Texture("beholder.png");
 
+		gameScreen = new GameScreen();
 	}
 
 	@Override
@@ -55,34 +57,10 @@ public class Main extends ApplicationAdapter {
 		ScreenUtils.clear(0, 0, 0, 1);
 
 		// Jeśli gra jeszcze nie została rozpoczęta, wyświetlaj menu
-		if (!GameManager.getInstance().isGameStarted()) {
 			GameManager.getInstance().render();
-		} else {
-			// Jeśli gra została rozpoczęta, renderuj grę
-			batch.begin();
-			player.Draw(batch);
-			player.checkAmmoDrop(enemies.ammunitions);
-			enemies.CheckPlayerCollision(player);
-			enemies.CheckEndOfMap();
-			if (GameManager.getInstance().getNumberOfPlayers() == 2) {
-				player2.Draw(batch);
-				player2.checkAmmoDrop(enemies.ammunitions);
-				enemies.CheckPlayerCollision(player2);
-			}
-			System.out.println(player.ammoPierce);
-			enemies.Draw(batch);
-			for (Bullet bullet : player.bullets) {
-				/*if(enemies.alien_alive_amount==0)
-					bullet.active=false;*/
-				enemies.CheckCollision(bullet);
-			}
-			for (Bullet bullet : player2.bullets) {
-				/*if(enemies.alien_alive_amount==0)
-					bullet.active=false;*/
-				enemies.CheckCollision(bullet);
-			}
-			//a1.Draw(batch);
-			batch.end();
+		if(GameManager.getInstance().gameState== GameManager.GameState.STARTGAME) {
+			gameScreen.render();
+			gameScreen.obsluga_klaw();
 		}
 	}
 
