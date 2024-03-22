@@ -52,9 +52,9 @@ public class Enemies {
                 i++;
             }
         }
-        font = new BitmapFont();
+        font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(2);
+        font.getData().setScale(1);
     }
     void EnemyReinforcements(Texture img,int type)
     {
@@ -234,7 +234,7 @@ public class Enemies {
                 i++;
             }
         }
-        font.draw(batch, "Score: " + score, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight()/2+(int)(Gdx.graphics.getHeight()*0.10), 0, Align.right, false);
+        font.draw(batch, "Score: " + score, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight()*0.05), 0, Align.right, false);
         for (Ammunition ammunition : ammunitions) {
             if(ammunition.isactive==true)
                 ammunition.Draw(batch);

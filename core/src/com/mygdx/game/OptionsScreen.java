@@ -19,16 +19,16 @@ public class OptionsScreen {
     private BitmapFont font;
     private OrthographicCamera camera;
 
-    private String[] resolutions = {"800x600", "1024x768", "1280x720"}; // Przykładowe rozdzielczości
-    private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720"};
+    private String[] resolutions = {"800x600", "1024x768", "1280x720", "1900x1080"}; // Przykładowe rozdzielczości
+    private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1080"};
     private int currentResolutionIndex = 0;
     private Stage stage;
 
     public OptionsScreen() {
         batch = new SpriteBatch();
-        font = new BitmapFont();
+        font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(2);
+        font.getData().setScale(1);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
     }
@@ -57,16 +57,17 @@ public class OptionsScreen {
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
 
-        float textX = screenWidth / 2; // Początkowe położenie tekstu X
-        float textY = screenHeight * 0.9f; // Początkowe położenie tekstu Y
-
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        font.draw(batch, "Current Resolution: " + screenWidth + "x" + screenHeight, screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
-        font.draw(batch, "Options Screen", textX, textY, 0, Align.center, false);
-        font.draw(batch, "Press ENTER to go back to main menu", screenWidth / 2, screenHeight * 0.7f, 0, Align.center, false);
-        font.draw(batch, "Press UP/DOWN to change resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.6f, 0, Align.center, false);
+
+        // Oblicz nowe położenie tekstu na podstawie aktualnych rozmiarów ekranu
+        float textX = screenWidth / 2;
+        float textY = screenHeight * 0.9f;
+
+        font.draw(batch, "Press UP/DOWN to change resolution", screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
+        font.draw(batch, "Current Resolution: " + screenWidth + "x" + screenHeight, screenWidth / 2, screenHeight * 0.9f, 0, Align.center, false);
+
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
@@ -75,16 +76,17 @@ public class OptionsScreen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
             cycleResolution(true);
-            saveResolutionToFile(); // Zapisz nową rozdzielczość po zmianie
+            saveResolutionToFile();
             updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
             cycleResolution(false);
-            saveResolutionToFile(); // Zapisz nową rozdzielczość po zmianie
+            saveResolutionToFile();
             updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
         }
     }
+
 
 
     private void cycleResolution(boolean increment) {

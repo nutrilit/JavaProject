@@ -30,9 +30,9 @@ public class Player {
     private boolean isAlive;
 
     public Player(Texture img,int type) {
-        font = new BitmapFont();
+        font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(2);
+        font.getData().setScale(1);
         sprite = new Sprite(img);
         sprite.setScale(4);
         pos = new Vector2(Gdx.graphics.getWidth() / 2, sprite.getScaleY() * sprite.getHeight() / 2);
@@ -137,12 +137,14 @@ public class Player {
             bullet.draw(batch);
         }
         //bullets.removeIf(bullet -> bullet.position.y < 0);
-        if(playerType==1){
-            font.draw(batch, "Lives Player1: " + lives, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight()/2, 0, Align.right, false);
+        if (playerType == 1) {
+            font.draw(batch, "Lives Player1: " + lives, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.15), 0, Align.right, false);
+            font.draw(batch, "Ammo PLayer1: " + ammoPierce, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.20), 0, Align.right, false);
+        } else {
+            font.draw(batch, "Lives Player2: " + lives, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.40), 0, Align.right, false);
+            font.draw(batch, "Ammo Player2: " + ammoPierce, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.45), 0, Align.right, false);
         }
-        else{
-            font.draw(batch, "Lives Player2: " + lives, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight()/2-(int)(Gdx.graphics.getHeight()*0.05), 0, Align.right, false);
-        }
+
     }
 
     private void fire() {
