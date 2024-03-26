@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Align;
 
 public class GameManager {
     private static GameManager instance;
+
     private MainMenu mainMenu;
     private OptionsScreen optionsScreen; // Dodane pole przechowujące ekran opcji
 
@@ -14,6 +15,7 @@ public class GameManager {
     private boolean gameStarted;
     public boolean gameMenu;
     private int numberOfPlayers;
+    GameScreen gameScreen;
     public enum GameState {
         MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE;
     }
@@ -29,7 +31,7 @@ public class GameManager {
         gameStarted = false;
         gameMenu = true; // Początkowo ustawiamy na ekran menu
         gameState = GameState.MAIN_MENU;
-
+        gameScreen = new GameScreen();
     }
 
     public static GameManager getInstance() {
@@ -65,6 +67,10 @@ public class GameManager {
                 break;
             case COPYRIGHT:
                 copyRight.render();
+                break;
+            case STARTGAME:
+                gameScreen.render();
+                gameScreen.obsluga_klaw();
                 break;
         }
     }
