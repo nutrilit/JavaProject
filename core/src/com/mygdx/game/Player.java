@@ -101,8 +101,8 @@ public class Player {
     public void removeBullets()
     {
         for (Bullet bullet : bullets) {
-            if(bullet.position.y<=0) {
-                bullet.active = false;
+            if(bullet.position.y>=100) {
+                bullet = null;
                 bullets.remove(bullet);
             }
         }

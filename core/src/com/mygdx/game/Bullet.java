@@ -19,7 +19,6 @@ public class Bullet {
         this.active = true;
         this.type=type;
     }
-
     public void draw(SpriteBatch batch) {
         if(this.active==true) {
             position.y += speed * Gdx.graphics.getDeltaTime(); // Aktualizacja pozycji pocisku

@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Align;
 
 public class GameManager {
@@ -16,6 +17,8 @@ public class GameManager {
     public boolean gameMenu;
     private int numberOfPlayers;
     GameScreen gameScreen;
+    private Music music;
+    private Music gameMusic;
     public enum GameState {
         MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE;
     }
@@ -32,6 +35,8 @@ public class GameManager {
         gameMenu = true; // Początkowo ustawiamy na ekran menu
         gameState = GameState.MAIN_MENU;
         gameScreen = new GameScreen();
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/Familiada.mp3"));
+        gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/WBA Free Track - Hackers.mp3"));
     }
 
     public static GameManager getInstance() {
@@ -53,6 +58,8 @@ public class GameManager {
         switch (gameState) {
             case MAIN_MENU:
                 mainMenu.render();
+                gameMusic.stop();
+                music.play();
                 break;
             case OPTIONS:
                 optionsScreen.render();
@@ -69,6 +76,8 @@ public class GameManager {
                 copyRight.render();
                 break;
             case STARTGAME:
+                gameMusic.play();
+                music.stop();
                 gameScreen.render();
                 gameScreen.obsluga_klaw();
                 break;
@@ -78,6 +87,7 @@ public class GameManager {
     public void dispose() {
         mainMenu.dispose();
         optionsScreen.dispose(); // Dispose ekranu opcji
+        music.dispose();
     }
 
     public void startGame(int numberOfPlayers) {
@@ -94,5 +104,6 @@ public class GameManager {
     public int getNumberOfPlayers() {
         return numberOfPlayers;
     }
+
 }
 
