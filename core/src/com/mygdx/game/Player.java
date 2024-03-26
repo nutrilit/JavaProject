@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
@@ -28,6 +29,7 @@ public class Player {
     private int lives=1;
     private  int score;
     private boolean isAlive;
+    private Music shoot;
 
     public Player(Texture img,int type) {
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
@@ -42,6 +44,7 @@ public class Player {
         this.lives=3;
         this.isAlive=true;
         this.score=0;
+        shoot = Gdx.audio.newMusic(Gdx.files.internal("music/12-Gauge-Pump-Action-Shotgun-Close-Gunshot-A-www.fesliyanstudios.com.mp3"));
     }
 
     void playerMovement(float deltaTime) {
@@ -154,6 +157,8 @@ public class Player {
     private void fire() {
         // Tworzenie nowego pocisku i dodawanie go do listy
         Texture bulletTexture = new Texture("bullet1.png");
+        shoot.stop();
+        shoot.play();
         switch(currentWeapon){
             case 1:
                 bulletTexture = new Texture("bullet1.png");

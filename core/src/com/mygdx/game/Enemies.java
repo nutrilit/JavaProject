@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -31,6 +32,8 @@ public class Enemies {
     Texture[] textures = new Texture[4];
     private BitmapFont font;
     public List<Ammunition> ammunitions;
+    private Music dyingSound;
+    private Music explosion;
 
     public Enemies(Texture img)
     {
@@ -55,6 +58,8 @@ public class Enemies {
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
         font.getData().setScale(1);
+        dyingSound = Gdx.audio.newMusic(Gdx.files.internal("music/lego-yoda-death-sound-effect.mp3"));
+        explosion = Gdx.audio.newMusic(Gdx.files.internal("music/mixkit-arcade-game-explosion-1699.wav"));
     }
     void EnemyReinforcements(Texture img,int type)
     {
@@ -105,7 +110,6 @@ public class Enemies {
                     {
                     /*for(int ii=0;ii<aliens.length;ii++) //zabijanie wszyskich
                         aliens[ii].alive=false;*/
-
                                 /*Texture ammoTexture = new Texture("pierce_ammo.png");
                                 Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
                                 ammunitions.add(ammo);*/
@@ -115,6 +119,8 @@ public class Enemies {
                     aliens[i].lives--;*/
                         if (aliens[i].lives <= 0) {
                             aliens[i].alive = false;
+                            dyingSound.stop();
+                            dyingSound.play();
                         }
                     }
                 }
@@ -137,10 +143,13 @@ public class Enemies {
             case 2:
             {
                 aliens[i].alive = false;
+                explosion.play();
             }
             break;
             case 3:
             {
+                explosion.stop();
+                explosion.play();
                 aliens[i].alive=false;
                 bullet.active=false;
                 if((i-1)>0 && (i+1)<aliens.length)
