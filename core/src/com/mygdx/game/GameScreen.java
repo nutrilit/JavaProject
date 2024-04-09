@@ -18,18 +18,26 @@ public class GameScreen {
     SpriteBatch batch;
     Texture playerImg;
     Texture alienImg;
+    Texture asteroidImg;
     Texture bulletImg;
 
     Player player;
     Player player2;
     Enemies enemies;
+    Asteroid asteroid;
+    Asteroid asteroid2;
+    Asteroid asteroid3;
     public GameScreen()
     {
         batch = new SpriteBatch();
         playerImg = new Texture("ship.png");
         alienImg = new Texture("alien.png");
+        asteroidImg = new Texture("beholder.png");
         player = new Player(playerImg,1);
         player2 = new Player(playerImg,2);
+        asteroid = new Asteroid(asteroidImg,true,Gdx.graphics.getHeight() * 0.5f);
+        asteroid2=new Asteroid(asteroidImg,true,Gdx.graphics.getHeight() * 0.75f);
+        asteroid3=new Asteroid(asteroidImg,false,Gdx.graphics.getHeight() * 1f);
         player2.pos.x+=20;
         //a1 = new Alien(pos,alienImg,1);
         enemies = new Enemies(alienImg);
@@ -45,6 +53,9 @@ public class GameScreen {
         player.checkAmmoDrop(enemies.ammunitions);
         enemies.CheckPlayerCollision(player);
         enemies.CheckEndOfMap();
+        asteroid.draw(batch);
+        asteroid2.draw(batch);
+        asteroid3.draw(batch);
         if (GameManager.getInstance().getNumberOfPlayers() == 2) {
             player2.Draw(batch);
             player2.checkAmmoDrop(enemies.ammunitions);
