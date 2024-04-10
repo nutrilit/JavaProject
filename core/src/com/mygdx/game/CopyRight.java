@@ -5,8 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Align;
 
@@ -17,6 +19,7 @@ public class CopyRight {
 
     private int currentResolutionIndex = 0;
     private Stage stage;
+    private Texture backgroundTexture;
 
     public CopyRight() {
         batch = new SpriteBatch();
@@ -25,6 +28,7 @@ public class CopyRight {
         font.getData().setScale(2);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
+        backgroundTexture = new Texture("optionsTlo.png");
     }
     public void obsluga_klaw(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
@@ -43,6 +47,7 @@ public class CopyRight {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
+        batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         font.draw(batch, "CopyRight: ", screenWidth / 2, screenHeight * 0.8f, 0, Align.left, false);
         batch.end();
         obsluga_klaw();

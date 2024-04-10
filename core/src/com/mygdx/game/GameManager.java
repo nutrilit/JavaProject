@@ -36,7 +36,9 @@ public class GameManager {
         gameState = GameState.MAIN_MENU;
         gameScreen = new GameScreen();
         //music = Gdx.audio.newMusic(Gdx.files.internal("music/Familiada.mp3"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/Brunetki.mp3"));
+        //music = Gdx.audio.newMusic(Gdx.files.internal("music/Brunetki.mp3"));
+        //music = Gdx.audio.newMusic(Gdx.files.internal("music/cygan.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/jessica.mp3"));
         gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/WBA Free Track - Hackers.mp3"));
     }
 

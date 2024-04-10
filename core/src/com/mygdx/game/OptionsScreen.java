@@ -5,8 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Align;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -23,14 +25,17 @@ public class OptionsScreen {
     private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1080"};
     private int currentResolutionIndex = 0;
     private Stage stage;
+    private Texture backgroundTexture;
 
     public OptionsScreen() {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(1);
+        font.getData().setScale(2);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
+        backgroundTexture = new Texture("optionsTlo.png");
+
     }
     public void updateResolution(int width, int height) {
         Gdx.graphics.setWindowedMode(width, height);
@@ -60,13 +65,13 @@ public class OptionsScreen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-
+        batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         // Oblicz nowe położenie tekstu na podstawie aktualnych rozmiarów ekranu
         float textX = screenWidth / 2;
         float textY = screenHeight * 0.9f;
 
-        font.draw(batch, "Press UP/DOWN to change resolution", screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
-        font.draw(batch, "Current Resolution: " + screenWidth + "x" + screenHeight, screenWidth / 2, screenHeight * 0.9f, 0, Align.center, false);
+        font.draw(batch, "Press UP/DOWN to change resolution", screenWidth / 2, screenHeight * 0.9f, 0, Align.center, false);
+        font.draw(batch, "Current Resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
 
         batch.end();
 
@@ -77,13 +82,13 @@ public class OptionsScreen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
             cycleResolution(true);
             saveResolutionToFile();
-            updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
+            //updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
             cycleResolution(false);
             saveResolutionToFile();
-            updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
+            //updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
         }
     }
 
