@@ -80,7 +80,7 @@ public class Player {
             if (pos.x + (sprite.getScaleX() * sprite.getWidth() / 2) >= Gdx.graphics.getWidth()-(0.2*Gdx.graphics.getWidth()))
                 pos.x = (Gdx.graphics.getWidth()-(int)(0.2*Gdx.graphics.getWidth())) - (sprite.getScaleY() * sprite.getHeight() / 2);
 
-            if(Gdx.input.isKeyJustPressed(Keys.P))
+            if(Gdx.input.isKeyJustPressed(Keys.L))
                 currentWeapon++;
             if(currentWeapon>3)
                 currentWeapon=1;
