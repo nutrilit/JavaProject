@@ -93,7 +93,7 @@ public class GameScreen {
     }
     public void obsluga_klaw(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-            GameManager.getInstance().gameState = GameManager.GameState.MAIN_MENU;
+            GameManager.getInstance().gameState = GameManager.GameState.PAUSE;
         }
     }
 }
