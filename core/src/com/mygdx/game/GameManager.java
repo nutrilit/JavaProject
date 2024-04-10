@@ -93,6 +93,8 @@ public class GameManager {
                 break;
             case GAMEOVER:
                 gameOver.render();
+                gameScreen.player.removeAllBullets();
+                gameScreen.enemies.removeallAmmo();
                 break;
         }
     }

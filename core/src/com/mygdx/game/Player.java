@@ -103,12 +103,24 @@ public class Player {
     }
     public void removeBullets()
     {
+        List<Bullet> bulletsToRemove = new ArrayList<>();
+
         for (Bullet bullet : bullets) {
-            if(bullet.position.y>=100) {
-                bullet = null;
-                bullets.remove(bullet);
+            if (bullet.position.y >= Gdx.graphics.getWidth()) {
+                bulletsToRemove.add(bullet);
             }
         }
+        bullets.removeAll(bulletsToRemove);
+    }
+    public void removeAllBullets()
+    {
+        List<Bullet> bulletsToRemove = new ArrayList<>();
+
+        for (Bullet bullet : bullets) {
+                bulletsToRemove.add(bullet);
+
+        }
+        bullets.removeAll(bulletsToRemove);
     }
     public void checkAmmoDrop(List<Ammunition> ammunitions)
     {

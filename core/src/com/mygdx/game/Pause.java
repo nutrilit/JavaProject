@@ -37,6 +37,9 @@ public class Pause {
     public void obsluga_klaw(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             GameManager.getInstance().gameState = GameManager.GameState.MAIN_MENU;
+            GameManager.getInstance().gameScreen.enemies.resetEnemies();
+            GameManager.getInstance().gameScreen.enemies.removeallAmmo();
+            GameManager.getInstance().gameScreen.player.removeAllBullets();
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             GameManager.getInstance().gameState = GameManager.GameState.STARTGAME;
