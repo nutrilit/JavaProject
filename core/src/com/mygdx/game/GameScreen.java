@@ -61,6 +61,8 @@ public class GameScreen {
         player.checkAmmoDrop(enemies.ammunitions);
         enemies.CheckPlayerCollision(player);
         enemies.CheckEndOfMap();
+        player.removeBullets();
+        enemies.removeAmmo();
         asteroid.draw(batch);
         asteroid2.draw(batch);
         asteroid3.draw(batch);

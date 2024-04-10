@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
+import sun.jvm.hotspot.debugger.win32.coff.TestDebugInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +35,14 @@ public class Enemies {
     public List<Ammunition> ammunitions;
     private Music dyingSound;
     private Music explosion;
+    private Texture tmptexture;
 
     public Enemies(Texture img)
     {
         alien_move = Vector2.Zero;
         aliens = new Alien[With_aliens*Height_aliens];
         alien_alive_amount = aliens.length;
+        tmptexture = new Texture("alien.png");
         int i=0;
         ammunitions = new ArrayList<>();
         for(int y=0; y<Height_aliens;y++)
@@ -60,6 +63,19 @@ public class Enemies {
         font.getData().setScale(1);
         dyingSound = Gdx.audio.newMusic(Gdx.files.internal("music/lego-yoda-death-sound-effect.mp3"));
         explosion = Gdx.audio.newMusic(Gdx.files.internal("music/mixkit-arcade-game-explosion-1699.wav"));
+    }
+    void resetEnemies()
+    {
+        alien_speed=100;
+        alien_move = new Vector2(0, 0);
+        for (int i = 0; i < aliens.length; i++) {
+            aliens[i].pos = new Vector2(aliens[i].posInit.x + alien_move.x, aliens[i].posInit.y + alien_move.y);
+        }
+        for (int i = 0; i < aliens.length; i++) {
+            aliens[i].alive = true;
+        }
+        currType=1;
+        EnemyReinforcements(textures[0],currType);
     }
     void EnemyReinforcements(Texture img,int type)
     {
@@ -85,6 +101,7 @@ public class Enemies {
             if(aliens[i].alive==true) {
                 if(player.sprite.getBoundingRectangle().overlaps(aliens[i].sprite.getBoundingRectangle()))
                 {
+                    resetEnemies();
                     GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
                 }
             }
@@ -95,6 +112,7 @@ public class Enemies {
         for(int i=0;i<aliens.length;i++)
         {
             if(aliens[i].alive==true && aliens[i].pos.y<0) {
+                resetEnemies();
                 GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
             }
         }
@@ -125,6 +143,27 @@ public class Enemies {
                     }
                 }
             }
+    }
+
+    public void removeAmmo()
+    {
+        List<Ammunition> ammoToRemove = new ArrayList<>();
+
+        for (Ammunition ammunition : ammunitions) {
+            if (ammunition.pos.y <= 0) {
+                ammoToRemove.add(ammunition);
+            }
+        }
+        ammunitions.removeAll(ammoToRemove);
+    }
+    public void removeallAmmo()
+    {
+        List<Ammunition> ammoToRemove = new ArrayList<>();
+
+        for (Ammunition ammunition : ammunitions) {
+                ammoToRemove.add(ammunition);
+        }
+        ammunitions.removeAll(ammoToRemove);
     }
 
     void bulletKill(Bullet bullet,int i)
