@@ -13,6 +13,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import javax.swing.text.View;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.Adler32;
 
 public class GameScreen {
     SpriteBatch batch;
@@ -27,6 +30,7 @@ public class GameScreen {
     Asteroid asteroid;
     Asteroid asteroid2;
     Asteroid asteroid3;
+    public List<Asteroid> asteroids = new ArrayList<>();
     public GameScreen()
     {
         batch = new SpriteBatch();
@@ -40,6 +44,10 @@ public class GameScreen {
         asteroid3=new Asteroid(asteroidImg,false,Gdx.graphics.getHeight() * 1f);
         player2.pos.x+=20;
         //a1 = new Alien(pos,alienImg,1);
+        asteroids.add(asteroid);
+        asteroids.add(asteroid2);
+        asteroids.add(asteroid3);
+
         enemies = new Enemies(alienImg);
 
         enemies.textures[0] = new Texture("alien.png");
@@ -67,11 +75,18 @@ public class GameScreen {
 				/*if(enemies.alien_alive_amount==0)
 					bullet.active=false;*/
             enemies.CheckCollision(bullet);
+            for (Asteroid asteroid : asteroids) {
+                asteroid.CheckCollision(bullet);
+            }
+
         }
         for (Bullet bullet : player2.bullets) {
 				/*if(enemies.alien_alive_amount==0)
 					bullet.active=false;*/
             enemies.CheckCollision(bullet);
+            asteroid.CheckCollision(bullet);
+            asteroid2.CheckCollision(bullet);
+            asteroid3.CheckCollision(bullet);
         }
         //a1.Draw(batch);
         batch.end();
