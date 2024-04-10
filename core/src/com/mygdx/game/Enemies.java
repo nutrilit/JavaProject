@@ -85,7 +85,7 @@ public class Enemies {
             if(aliens[i].alive==true) {
                 if(player.sprite.getBoundingRectangle().overlaps(aliens[i].sprite.getBoundingRectangle()))
                 {
-                    Gdx.app.exit();
+                    GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
                 }
             }
         }
@@ -95,7 +95,7 @@ public class Enemies {
         for(int i=0;i<aliens.length;i++)
         {
             if(aliens[i].alive==true && aliens[i].pos.y<0) {
-                Gdx.app.exit();
+                GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
             }
         }
     }

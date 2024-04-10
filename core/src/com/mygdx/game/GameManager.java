@@ -12,6 +12,8 @@ public class GameManager {
 
     private  Score score;
     private Help help;
+    private Pause pause;
+    private GameOver gameOver;
     private CopyRight copyRight;
     private boolean gameStarted;
     public boolean gameMenu;
@@ -20,7 +22,7 @@ public class GameManager {
     private Music music;
     private Music gameMusic;
     public enum GameState {
-        MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE;
+        MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE,GAMEOVER;
     }
     public GameState gameState;
 
@@ -31,6 +33,8 @@ public class GameManager {
         help = new Help();
         copyRight = new CopyRight();
         score = new Score();
+        pause = new Pause();
+        gameOver = new GameOver();
         gameStarted = false;
         gameMenu = true; // Początkowo ustawiamy na ekran menu
         gameState = GameState.MAIN_MENU;
@@ -83,6 +87,12 @@ public class GameManager {
                 music.stop();
                 gameScreen.render();
                 gameScreen.obsluga_klaw();
+                break;
+            case PAUSE:
+                pause.render();
+                break;
+            case GAMEOVER:
+                gameOver.render();
                 break;
         }
     }
