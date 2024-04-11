@@ -30,13 +30,15 @@ public class Player {
     private  int score;
     private boolean isAlive;
     private Music shoot;
+    int scale = 4;
 
     public Player(Texture img,int type) {
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
         font.getData().setScale(1);
         sprite = new Sprite(img);
-        sprite.setScale(4);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        sprite.setScale(BufferedReader.getInstance(filepath).scale);
         pos = new Vector2(Gdx.graphics.getWidth() / 2, sprite.getScaleY() * sprite.getHeight() / 2);
         bullets = new ArrayList<>(); // Initialize bullets list
         this.playerType=type;

@@ -16,7 +16,8 @@ public class Ammunition {
     public Ammunition(Texture img, int type,Vector2 pos)
     {
         sprite = new Sprite(img);
-        sprite.setScale(4);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        sprite.setScale(BufferedReader.getInstance(filepath).scale);
         this.type = type;
         this.pos = pos;
         isactive = true;

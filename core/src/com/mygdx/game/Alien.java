@@ -12,12 +12,14 @@ public class Alien {
     public Boolean alive;
     public int lives;
     public int type;
+
     public Alien(Vector2 _position, Texture alien, int type)
     {
         pos = _position;
         posInit = pos;
         sprite = new Sprite(alien);
-        sprite.setScale(4);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        sprite.setScale(BufferedReader.getInstance(filepath).scale);
         this.alive = true;
         type=type;
         switch (type){

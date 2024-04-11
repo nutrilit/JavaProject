@@ -12,9 +12,12 @@ public class Bullet {
     public boolean active;
     private float speed = 250; // Prędkość pocisku
     public int type;
+    int scale = 2;
 
     public Bullet(Texture texture, Vector2 position,int type) {
         this.sprite = new Sprite(texture);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        sprite.setScale(BufferedReader.getInstance(filepath).scale);
         this.position = position;
         this.active = true;
         this.type=type;

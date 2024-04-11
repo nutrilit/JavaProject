@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BufferedReader {
+    private static BufferedReader instance;
     List<Integer> optionList = new ArrayList<>();
+    public int scale = 4;
 
     // Konstruktor przyjmujący ścieżkę do pliku
     public BufferedReader(String filePath) {
@@ -20,6 +22,7 @@ public class BufferedReader {
                 int number = Integer.parseInt(line);
                 optionList.add(number);
             }
+            scale = optionList.get(2);
 
             bufferedReader.close();
         } catch (IOException e) {
@@ -34,5 +37,11 @@ public class BufferedReader {
         for (int number : optionList) {
             System.out.println(number);
         }
+    }
+    public static BufferedReader getInstance(String filepath) {
+        if (instance == null) {
+            instance = new BufferedReader(filepath);
+        }
+        return instance;
     }
 }

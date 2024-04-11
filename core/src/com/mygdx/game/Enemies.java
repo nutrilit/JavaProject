@@ -43,6 +43,8 @@ public class Enemies {
         aliens = new Alien[With_aliens*Height_aliens];
         alien_alive_amount = aliens.length;
         tmptexture = new Texture("alien.png");
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        space = 10*BufferedReader.getInstance(filepath).scale;
         int i=0;
         ammunitions = new ArrayList<>();
         for(int y=0; y<Height_aliens;y++)

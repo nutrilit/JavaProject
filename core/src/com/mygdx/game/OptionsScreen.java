@@ -23,6 +23,7 @@ public class OptionsScreen {
 
     private String[] resolutions = {"800x600", "1024x768", "1280x720", "1900x1080"}; // Przykładowe rozdzielczości
     private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1080"};
+    private String[] scale = {"3","4","4","5"};
     private int currentResolutionIndex = 0;
     private Stage stage;
     private Texture backgroundTexture;
@@ -47,8 +48,9 @@ public class OptionsScreen {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             bufferedWriter.write(resolutions2[currentResolutionIndex * 2] + "\n" + resolutions2[currentResolutionIndex * 2 + 1]);
+            bufferedWriter.write("\n"+scale[currentResolutionIndex]);
             System.out.println("Zapisano rozdzielczość: " + resolutions2[currentResolutionIndex * 2] + "x" + resolutions2[currentResolutionIndex * 2 + 1]);
-
+            System.out.println("Zapisano skale: " + currentResolutionIndex );
             bufferedWriter.close();
         } catch (IOException e) {
             System.out.println("Błąd podczas zapisu rozdzielczości do pliku.");
