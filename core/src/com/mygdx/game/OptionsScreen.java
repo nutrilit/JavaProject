@@ -27,7 +27,7 @@ public class OptionsScreen {
     private int currentResolutionIndex = 0;
     private Stage stage;
     private Texture backgroundTexture,mutedIcon, not;
-
+    String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
     public OptionsScreen() {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
@@ -71,11 +71,11 @@ public class OptionsScreen {
         // Oblicz nowe położenie tekstu na podstawie aktualnych rozmiarów ekranu
         float textX = screenWidth / 2;
         float textY = screenHeight * 0.9f;
-
+        float iconsize = 15*BufferedReader.getInstance(filepath).scale;
         font.draw(batch, "Press UP/DOWN to change resolution", screenWidth / 2, screenHeight * 0.9f, 0, Align.center, false);
         font.draw(batch, "Current Resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
-        batch.draw(new TextureRegion(mutedIcon), screenWidth * 2 / 5 - 70 , screenHeight *0.6f, 70, 70);
-        font.draw(batch, "Press M to muted music in menu ", screenWidth * 2 / 5, screenHeight * 0.66f, 0, Align.left, false);
+        //batch.draw(new TextureRegion(mutedIcon), screenWidth/2 , screenHeight *0.6f, iconsize, iconsize);
+        font.draw(batch, "Press M to muted music in menu ", screenWidth  *1/2, screenHeight * 0.6f+ (iconsize*2/3), 0, Align.center, false);
 
         batch.end();
 

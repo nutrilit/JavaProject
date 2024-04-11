@@ -45,6 +45,7 @@ public class Enemies {
         tmptexture = new Texture("alien.png");
         String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
         space = 10*BufferedReader.getInstance(filepath).scale;
+
         int i=0;
         ammunitions = new ArrayList<>();
         for(int y=0; y<Height_aliens;y++)
@@ -62,7 +63,7 @@ public class Enemies {
         }
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(1);
+        font.getData().setScale(0.2f*BufferedReader.getInstance(filepath).scale);
         dyingSound = Gdx.audio.newMusic(Gdx.files.internal("music/lego-yoda-death-sound-effect.mp3"));
         explosion = Gdx.audio.newMusic(Gdx.files.internal("music/mixkit-arcade-game-explosion-1699.wav"));
     }
