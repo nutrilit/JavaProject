@@ -19,16 +19,17 @@ public class CopyRight {
 
     private int currentResolutionIndex = 0;
     private Stage stage;
-    private Texture backgroundTexture;
+    private Texture backgroundTexture,copyrightIcon;
 
     public CopyRight() {
         batch = new SpriteBatch();
-        font = new BitmapFont();
+        font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(2);
+        font.getData().setScale(1);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
         backgroundTexture = new Texture("optionsTlo.png");
+        copyrightIcon = new Texture("copyright.png");
     }
     public void obsluga_klaw(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
@@ -48,7 +49,12 @@ public class CopyRight {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        font.draw(batch, "CopyRight: ", screenWidth / 2, screenHeight * 0.8f, 0, Align.left, false);
+        //batch.draw(new TextureRegion(copyrightIcon), screenWidth*1/4, screenHeight *0.80f, 70, 70);
+        font.draw(batch, "© 2024 MKP Corporation. All rights reserved.", screenWidth /2, screenHeight * 0.9f, 0, Align.center, false);
+        font.draw(batch, "Mariusz S", screenWidth / 2, screenHeight * 0.80f, 0, Align.center, false);
+        font.draw(batch, "Patryk W", screenWidth / 2, screenHeight * 0.75f, 0, Align.center, false);
+        font.draw(batch, "Jakub J", screenWidth / 2, screenHeight * 0.70f, 0, Align.center, false);
+
         batch.end();
         obsluga_klaw();
     }
