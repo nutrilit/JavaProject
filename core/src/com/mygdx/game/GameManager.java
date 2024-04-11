@@ -19,8 +19,10 @@ public class GameManager {
     public boolean gameMenu;
     private int numberOfPlayers;
     GameScreen gameScreen;
-    private Music music;
+    public Music music;
     private Music gameMusic;
+    public boolean musicMuted_in_lobby = false;
+
     public enum GameState {
         MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE,GAMEOVER;
     }
@@ -65,8 +67,12 @@ public class GameManager {
         switch (gameState) {
             case MAIN_MENU:
                 mainMenu.render();
-                gameMusic.stop();
-                music.play();
+                if (!music.isPlaying() && !musicMuted_in_lobby) {
+                    music.play(); // Odtwórz muzykę, jeśli nie jest odtwarzana i nie jest wyciszona
+                }
+                if (gameMusic.isPlaying()) {
+                    gameMusic.stop(); // Zatrzymaj muzykę gry, jeśli jest odtwarzana
+                }
                 break;
             case OPTIONS:
                 optionsScreen.render();
@@ -119,6 +125,7 @@ public class GameManager {
     public int getNumberOfPlayers() {
         return numberOfPlayers;
     }
+
 
 }
 

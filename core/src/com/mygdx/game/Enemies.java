@@ -126,8 +126,9 @@ public class Enemies {
                 {
                     if(bullet.sprite.getBoundingRectangle().overlaps(aliens[i].sprite.getBoundingRectangle()))
                     {
-                    /*for(int ii=0;ii<aliens.length;ii++) //zabijanie wszyskich
-                        aliens[ii].alive=false;*/
+                    for(int ii=0;ii<aliens.length;ii++) //zabijanie wszyskich
+                        aliens[ii].alive=false;
+
                                 /*Texture ammoTexture = new Texture("pierce_ammo.png");
                                 Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
                                 ammunitions.add(ammo);*/

@@ -15,7 +15,8 @@ import com.badlogic.gdx.utils.Align;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.FileReader;
+import java.io.BufferedReader;
 public class Score {
     private SpriteBatch batch;
     private BitmapFont font;
@@ -39,7 +40,18 @@ public class Score {
             GameManager.getInstance().gameState = GameManager.GameState.MAIN_MENU;
         }
     }
+/*    public String odczytajWynikZPliku() {
+        String wynikString = "0";
+        String filePath = "wynik.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            wynikString = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return wynikString;
+    }*/
     public void render() {
+        //String wynikString = odczytajWynikZPliku();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         int screenWidth = Gdx.graphics.getWidth();
@@ -52,13 +64,13 @@ public class Score {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+
         font.draw(batch, "Score: ", screenWidth / 2, screenHeight * 0.8f, 0, Align.left, false);
+        //font.draw(batch, wynikString, screenWidth / 2, screenHeight * 0.7f, 0, Align.left, false);
         batch.end();
         obsluga_klaw();
     }
-
-
-
 
     public void dispose() {
         batch.dispose();

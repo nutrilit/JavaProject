@@ -42,6 +42,17 @@ public class GameOver {
             GameManager.getInstance().gameState = GameManager.GameState.STARTGAME;
         }
     }
+/*    public void zapiszWynik(int wynik) {
+        String filePath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\wynik.txt";
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            writer.write(Integer.toString(wynik));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
+
     public void render() {
         camera.update();
         batch.setProjectionMatrix(camera.combined);

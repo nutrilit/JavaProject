@@ -25,17 +25,17 @@ public class OptionsScreen {
     private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1080"};
     private int currentResolutionIndex = 0;
     private Stage stage;
-    private Texture backgroundTexture;
+    private Texture backgroundTexture,mutedIcon, not;
 
     public OptionsScreen() {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(2);
+        font.getData().setScale(1);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
         backgroundTexture = new Texture("optionsTlo.png");
-
+        mutedIcon = new Texture("mutedicon.png");
     }
     public void updateResolution(int width, int height) {
         Gdx.graphics.setWindowedMode(width, height);
@@ -72,9 +72,10 @@ public class OptionsScreen {
 
         font.draw(batch, "Press UP/DOWN to change resolution", screenWidth / 2, screenHeight * 0.9f, 0, Align.center, false);
         font.draw(batch, "Current Resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
+        batch.draw(new TextureRegion(mutedIcon), screenWidth*1/5, screenHeight *0.6f, 70, 70);
+        font.draw(batch, "Press M to muted music in menu ", screenWidth / 2, screenHeight * 0.66f, 0, Align.center, false);
 
         batch.end();
-
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             GameManager.getInstance().gameState = GameManager.GameState.MAIN_MENU;
         }
@@ -90,6 +91,18 @@ public class OptionsScreen {
             saveResolutionToFile();
             //updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
         }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            if (GameManager.getInstance().music.isPlaying()) {
+                GameManager.getInstance().music.pause(); // Wycisz muzykę gry, jeśli jest odtwarzana
+                GameManager.getInstance().musicMuted_in_lobby = true; // Ustaw flagę wyciszenia muzyki
+            } else {
+                GameManager.getInstance().music.play(); // Wznów odtwarzanie muzyki gry, jeśli jest wyciszona
+                GameManager.getInstance().musicMuted_in_lobby = false; // Wyłącz flagę wyciszenia muzyki
+            }
+        }
+
+
     }
 
 
