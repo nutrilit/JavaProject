@@ -243,7 +243,7 @@ public class Enemies {
 
         alien_move.x+=alien_direct*deltaTime*alien_speed;
 
-        if(aliens[alien_maxX].pos.x>=Gdx.graphics.getWidth()-(0.2*Gdx.graphics.getWidth()))
+        if(aliens[alien_maxX].pos.x>=Gdx.graphics.getWidth()-(0.26*Gdx.graphics.getWidth()))
         {
             alien_direct=-1;
             alien_move.y-=aliens[0].sprite.getHeight()*aliens[0].sprite.getScaleY()*0.25f;

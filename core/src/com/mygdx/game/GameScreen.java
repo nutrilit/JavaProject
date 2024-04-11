@@ -5,9 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -31,6 +34,8 @@ public class GameScreen {
     Asteroid asteroid2;
     Asteroid asteroid3;
     public List<Asteroid> asteroids = new ArrayList<>();
+    private Texture backgroundTexture;
+    private ShapeRenderer shapeRenderer;
     public GameScreen()
     {
         batch = new SpriteBatch();
@@ -54,9 +59,12 @@ public class GameScreen {
         enemies.textures[1] = new Texture("reaver.png");
         enemies.textures[2] = new Texture("xenomorphv1.0.png");
         enemies.textures[3] = new Texture("beholder.png");
+        backgroundTexture = new Texture("spaceBackground.png");
+        shapeRenderer = new ShapeRenderer();
     }
     public void render() {
         batch.begin();
+        batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         player.Draw(batch);
         player.checkAmmoDrop(enemies.ammunitions);
         enemies.CheckPlayerCollision(player);
@@ -90,8 +98,13 @@ public class GameScreen {
             asteroid2.CheckCollision(bullet);
             asteroid3.CheckCollision(bullet);
         }
+
         //a1.Draw(batch);
         batch.end();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.BLUE);
+        shapeRenderer.line(Gdx.graphics.getWidth() * 0.76f, 0, Gdx.graphics.getWidth() * 0.76f, Gdx.graphics.getHeight());
+        shapeRenderer.end();
     }
     public void obsluga_klaw(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {

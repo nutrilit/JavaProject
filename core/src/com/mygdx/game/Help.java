@@ -84,7 +84,7 @@ public class Help {
         font.draw(batch, "Left: 'LEFT'", rightTextX, textY - 140, 0, Align.center, false);
         font.draw(batch, "Right: 'RIGHT'", rightTextX, textY - 180, 0, Align.center, false);
         font.draw(batch, "Shoot: 'SHIFT RIGHT'", rightTextX, textY - 220, 0, Align.center, false);
-        font.draw(batch, "Change bullet for player 2: 'L'", rightTextX, textY - 260, 0, Align.center, false);
+        font.draw(batch, "Change bullet for player 2: 'P'", rightTextX, textY - 260, 0, Align.center, false);
 
         font.draw(batch, "Pause during gameplay: 'ESC' (double press)", screenWidth / 2, textY - 340, 0, Align.center, false);
         font.draw(batch, "Quit game: 'ESC'", screenWidth / 2, textY - 380, 0, Align.center, false);
