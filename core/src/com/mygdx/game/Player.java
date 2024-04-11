@@ -153,15 +153,15 @@ public class Player {
         }
         //bullets.removeIf(bullet -> bullet.position.y < 0);
         if (playerType == 1) {
-            font.draw(batch, "Lives Player1: " + lives, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.15), 0, Align.right, false);
-            font.draw(batch, "Ammo1 PLayer1: " + ammoPierce, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.20), 0, Align.right, false);
-            font.draw(batch, "Ammo2 PLayer1: " + ammoCluster, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.25), 0, Align.right, false);
-            font.draw(batch, "PLayer1 Weapown: " + currentWeapon, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.30), 0, Align.right, false);
+            font.draw(batch, "Lives Player1: " + lives, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.15), 0, Align.right, false);
+            font.draw(batch, "Ammo1 PLayer1: " + ammoPierce, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.20), 0, Align.right, false);
+            font.draw(batch, "Ammo2 PLayer1: " + ammoCluster, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() *0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.25), 0, Align.right, false);
+            font.draw(batch, "PLayer1 Weapown: " + currentWeapon, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.30), 0, Align.right, false);
         } else {
-            font.draw(batch, "Lives Player2: " + lives, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.40), 0, Align.right, false);
-            font.draw(batch, "Ammo Player2: " + ammoPierce, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.45), 0, Align.right, false);
-            font.draw(batch, "Ammo2 PLayer2: " + ammoCluster, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.50), 0, Align.right, false);
-            font.draw(batch, "PLayer2 Weapown: " + currentWeapon, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.55), 0, Align.right, false);
+            font.draw(batch, "Lives Player2: " + lives, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.40), 0, Align.right, false);
+            font.draw(batch, "Ammo Player2: " + ammoPierce, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.45), 0, Align.right, false);
+            font.draw(batch, "Ammo2 PLayer2: " + ammoCluster, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() * 0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.50), 0, Align.right, false);
+            font.draw(batch, "PLayer2 Weapown: " + currentWeapon, Gdx.graphics.getWidth() - (int)(Gdx.graphics.getWidth() *0.02), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight() * 0.55), 0, Align.right, false);
         }
 
     }
