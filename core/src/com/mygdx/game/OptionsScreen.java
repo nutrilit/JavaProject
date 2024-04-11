@@ -74,8 +74,8 @@ public class OptionsScreen {
 
         font.draw(batch, "Press UP/DOWN to change resolution", screenWidth / 2, screenHeight * 0.9f, 0, Align.center, false);
         font.draw(batch, "Current Resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
-        batch.draw(new TextureRegion(mutedIcon), screenWidth*1/5, screenHeight *0.6f, 70, 70);
-        font.draw(batch, "Press M to muted music in menu ", screenWidth / 2, screenHeight * 0.66f, 0, Align.center, false);
+        batch.draw(new TextureRegion(mutedIcon), screenWidth * 2 / 5 - 70 , screenHeight *0.6f, 70, 70);
+        font.draw(batch, "Press M to muted music in menu ", screenWidth * 2 / 5, screenHeight * 0.66f, 0, Align.left, false);
 
         batch.end();
 

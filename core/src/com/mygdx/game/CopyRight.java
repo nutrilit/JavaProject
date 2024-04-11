@@ -25,7 +25,8 @@ public class CopyRight {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(1);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        font.getData().setScale(0.25f*BufferedReader.getInstance(filepath).scale);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
         backgroundTexture = new Texture("optionsTlo.png");

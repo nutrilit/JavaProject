@@ -29,7 +29,8 @@ public class GameOver {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(1);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        font.getData().setScale(0.5f*BufferedReader.getInstance(filepath).scale);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
         backgroundTexture = new Texture("optionsTlo.png");
@@ -66,7 +67,7 @@ public class GameOver {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        font.draw(batch, "Game Over", screenWidth / 2, screenHeight * 0.8f, 0, Align.left, false);
+        font.draw(batch, "Game Over", screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
         batch.end();
         obsluga_klaw();
     }

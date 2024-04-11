@@ -21,15 +21,16 @@ public class Help {
     private Texture backgroundTexture;
     Texture En0, En1,En2,En3,amm1,amm2,amm3;
     public Sprite sprite;
+    String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
 
     public Help() {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
-        font.getData().setScale(1);
+        font.getData().setScale(0.1f*BufferedReader.getInstance(filepath).scale);
         font2 = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font2.setColor(Color.WHITE);
-        font2.getData().setScale(2);
+        font.getData().setScale(0.2f*BufferedReader.getInstance(filepath).scale);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
         backgroundTexture = new Texture("optionsTlo.png");
@@ -60,8 +61,8 @@ public class Help {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(new TextureRegion(backgroundTexture), 0, 0, screenWidth, screenHeight);
-        font.getData().setLineHeight(20); // Zwiększenie odstępu między liniami tekstu
-        font2.getData().setLineHeight(20); // Zwiększenie odstępu między liniami tekstu
+        font.getData().setLineHeight(BufferedReader.getInstance(filepath).scale); // Zwiększenie odstępu między liniami tekstu
+        font2.getData().setLineHeight(BufferedReader.getInstance(filepath).scale); // Zwiększenie odstępu między liniami tekstu
         // font.draw(batch, "Help: ", screenWidth / 2, screenHeight * 0.8f, 0, Align.left, false);
 
         float LeftText = screenWidth * 1 / 4;
@@ -94,7 +95,7 @@ public class Help {
         font.setColor(Color.WHITE); // Reset font color
 
         font.draw(batch, "Lvl 1:", LeftText - 70, textY - 540 + 35, 0, Align.center, false);
-        batch.draw(new TextureRegion(En0), LeftText, textY - 540, 70, 70);
+        batch.draw(new TextureRegion(En0), LeftText, textY - 540, 20*BufferedReader.getInstance(filepath).scale, 25*BufferedReader.getInstance(filepath).scale);
 
         font.draw(batch, "Lvl 2:", LeftText - 70, textY - 640 + 35, 0, Align.center, false);
         batch.draw(new TextureRegion(En1), LeftText, textY - 640, 70, 70);
