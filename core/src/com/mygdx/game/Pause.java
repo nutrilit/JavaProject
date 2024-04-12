@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
@@ -41,6 +42,8 @@ public class Pause {
             GameManager.getInstance().gameScreen.enemies.resetEnemies();
             GameManager.getInstance().gameScreen.enemies.removeallAmmo();
             GameManager.getInstance().gameScreen.player.removeAllBullets();
+            GameManager.getInstance().gameScreen.player.reset();
+            GameManager.getInstance().gameScreen.player2.reset();
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             GameManager.getInstance().gameState = GameManager.GameState.STARTGAME;

@@ -36,7 +36,7 @@ public class Enemies {
     private Music dyingSound;
     private Music explosion;
     private Texture tmptexture;
-
+    boolean ammoType = true;
     public Enemies(Texture img)
     {
         alien_move = Vector2.Zero;
@@ -181,9 +181,21 @@ public class Enemies {
                 bullet.active=false;
                 aliens[i].lives--;
 
-                Texture ammoTexture = new Texture("pierce_ammo.png");
-                Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
-                ammunitions.add(ammo);
+                if(score%5==0) {
+                    if(ammoType==true) {
+                        Texture ammoTexture = new Texture("pierce_ammo.png");
+                        Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
+                        ammoType=false;
+                        ammunitions.add(ammo);
+                    }
+                    else
+                    {
+                        Texture ammoTexture = new Texture("cluster_ammo.png");
+                        Ammunition ammo = new Ammunition(ammoTexture, 2, aliens[i].pos);
+                        ammoType=true;
+                        ammunitions.add(ammo);
+                    }
+                }
             }
             break;
             case 2:
