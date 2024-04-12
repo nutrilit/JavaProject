@@ -20,7 +20,7 @@ public class GameManager {
     private int numberOfPlayers;
     GameScreen gameScreen;
     public Music music;
-    private Music gameMusic;
+    public Music gameMusic;
     public boolean musicMuted_in_lobby = false;
 
     public enum GameState {
@@ -68,10 +68,10 @@ public class GameManager {
             case MAIN_MENU:
                 mainMenu.render();
                 if (!music.isPlaying() && !musicMuted_in_lobby) {
-                    music.play(); // Odtwórz muzykę, jeśli nie jest odtwarzana i nie jest wyciszona
+                    music.play();
                 }
                 if (gameMusic.isPlaying()) {
-                    gameMusic.stop(); // Zatrzymaj muzykę gry, jeśli jest odtwarzana
+                    gameMusic.stop();
                 }
                 break;
             case OPTIONS:

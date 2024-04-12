@@ -105,7 +105,6 @@ public class Enemies {
                 if(player.sprite.getBoundingRectangle().overlaps(aliens[i].sprite.getBoundingRectangle()))
                 {
                     resetEnemies();
-                    score = 0;
                     player.reset();
                     GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
                 }
@@ -118,7 +117,6 @@ public class Enemies {
         {
             if(aliens[i].alive==true && aliens[i].pos.y<0) {
                 resetEnemies();
-                score = 0;
                 player.reset();
                 GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
             }
@@ -307,5 +305,6 @@ public class Enemies {
                 ammunition.Draw(batch);
         }
     }
+
 
 }

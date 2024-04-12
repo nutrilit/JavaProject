@@ -98,6 +98,7 @@ public class OptionsScreen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
             if (GameManager.getInstance().music.isPlaying()) {
                 GameManager.getInstance().music.pause(); // Wycisz muzykę gry, jeśli jest odtwarzana
+                //GameManager.getInstance().gameMusic.pause(); // Wycisz muzykę gry, jeśli jest odtwarzana
                 GameManager.getInstance().musicMuted_in_lobby = true; // Ustaw flagę wyciszenia muzyki
             } else {
                 GameManager.getInstance().music.play(); // Wznów odtwarzanie muzyki gry, jeśli jest wyciszona

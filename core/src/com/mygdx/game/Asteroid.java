@@ -22,7 +22,8 @@ public class Asteroid {
     public Asteroid(Texture texture, boolean isRightAligned,float initialHeight) {
         this.texture = texture;
         this.sprite =  new Sprite(texture);
-        sprite.setScale(3);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        sprite.setScale(BufferedReader.getInstance(filepath).scale);
         width = 50;
         height = 50;
 

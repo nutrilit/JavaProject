@@ -1,0 +1,15 @@
+mariusz 1
+kuba 2
+ola11
+sda 1
+asd 2
+ola11
+sda 1
+asd 2
+ola11
+sda 1
+asd 2
+ola11
+sda 1
+kuba 3
+damci    0

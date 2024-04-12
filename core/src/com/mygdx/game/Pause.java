@@ -44,6 +44,7 @@ public class Pause {
             GameManager.getInstance().gameScreen.player.removeAllBullets();
             GameManager.getInstance().gameScreen.player.reset();
             GameManager.getInstance().gameScreen.player2.reset();
+            GameManager.getInstance().gameScreen.enemies.score = 0;
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             GameManager.getInstance().gameState = GameManager.GameState.STARTGAME;
