@@ -95,6 +95,11 @@ public class Player {
             }
         }
     }
+    void reset(){
+          this.ammoPierce = 5;
+          this.ammoCluster = 5;
+          this.lives = 3;
+    }
 
     public void update(float deltaTime) {
         playerMovement(deltaTime);

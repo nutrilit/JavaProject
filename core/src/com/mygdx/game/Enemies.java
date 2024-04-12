@@ -104,17 +104,21 @@ public class Enemies {
                 if(player.sprite.getBoundingRectangle().overlaps(aliens[i].sprite.getBoundingRectangle()))
                 {
                     resetEnemies();
+                    score = 0;
+                    player.reset();
                     GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
                 }
             }
         }
     }
-    void CheckEndOfMap()
+    void CheckEndOfMap(Player player)
     {
         for(int i=0;i<aliens.length;i++)
         {
             if(aliens[i].alive==true && aliens[i].pos.y<0) {
                 resetEnemies();
+                score = 0;
+                player.reset();
                 GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
             }
         }
