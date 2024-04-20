@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Align;
 
 public class GameManager {
@@ -12,6 +13,7 @@ public class GameManager {
     private OptionsScreen optionsScreen; // Dodane pole przechowujące ekran opcji
 
     private  Score score;
+    private Player player;
     private Help help;
     private Pause pause;
     private GameOver gameOver;
@@ -23,7 +25,6 @@ public class GameManager {
     public Music music;
     public Music gameMusic;
     public boolean musicMuted_in_lobby_and_game = false;
-
     public enum GameState {
         MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE,GAMEOVER;
     }
@@ -56,18 +57,24 @@ public class GameManager {
         }
         return instance;
     }
-public void wyciszenie(){
-    if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
-        musicMuted_in_lobby_and_game = !musicMuted_in_lobby_and_game;
+    public void wyciszenie(){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
+            musicMuted_in_lobby_and_game = !musicMuted_in_lobby_and_game;
+        }
+        if (musicMuted_in_lobby_and_game) {
+            gameMusic.setVolume(0);
+            music.setVolume(0);
+            GameManager.getInstance().gameScreen.player.shoot.setVolume(0);
+            GameManager.getInstance().gameScreen.enemies.explosion.setVolume(0);
+            GameManager.getInstance().gameScreen.enemies.dyingSound.setVolume(0);
+        } else {
+            gameMusic.setVolume(1);
+            music.setVolume(1);
+            GameManager.getInstance().gameScreen.player.shoot.setVolume(1);
+            GameManager.getInstance().gameScreen.enemies.explosion.setVolume(1);
+            GameManager.getInstance().gameScreen.enemies.dyingSound.setVolume(0);
+        }
     }
-    if (musicMuted_in_lobby_and_game) {
-        gameMusic.setVolume(0);
-        music.setVolume(0);
-    } else {
-        gameMusic.setVolume(1);
-        music.setVolume(1);
-    }
-}
     public void render() {
 /*        if (gameMenu) {
             mainMenu.render();
@@ -80,8 +87,8 @@ public void wyciszenie(){
         switch (gameState) {
             case MAIN_MENU:
                 mainMenu.render();
-                    music.play();
-                    gameMusic.stop();
+                music.play();
+                gameMusic.stop();
                 wyciszenie();
                 break;
             case OPTIONS:
@@ -145,4 +152,3 @@ public void wyciszenie(){
 
 
 }
-

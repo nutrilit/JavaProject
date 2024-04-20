@@ -29,7 +29,7 @@ public class Player {
     private int lives=1;
     private  int score;
     private boolean isAlive;
-    private Music shoot;
+    public Music shoot;
     int scale = 4;
 
     public Player(Texture img,int type) {
@@ -181,6 +181,7 @@ public class Player {
         Texture bulletTexture = new Texture("bullet1.png");
         shoot.stop();
         shoot.play();
+        GameManager.getInstance().wyciszenie();
         switch(currentWeapon){
             case 1:
                 bulletTexture = new Texture("bullet1.png");

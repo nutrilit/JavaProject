@@ -107,7 +107,7 @@ public class Help {
         batch.draw(new TextureRegion(En3), LeftText, screenHeight *0.11f, iconsize, iconsize);
 
         font.setColor(Color.YELLOW);
-        font.draw(batch, "Bullet Types:", rightTextX, screenHeight *0.54f, 0, Align.center, false);
+        font.draw(batch, "Bullet Types:", rightTextX, screenHeight *0.56f, 0, Align.center, false);
 
         font.setColor(Color.WHITE); // Reset font color
         font.draw(batch, "Normal Bullet:", rightTextX - (iconsize*2), screenHeight *0.41f+ (iconsize*2/3), 0, Align.center, false);

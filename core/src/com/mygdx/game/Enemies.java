@@ -33,8 +33,8 @@ public class Enemies {
     Texture[] textures = new Texture[4];
     private BitmapFont font;
     public List<Ammunition> ammunitions;
-    private Music dyingSound;
-    private Music explosion;
+    public Music dyingSound;
+    public Music explosion;
     private Texture tmptexture;
     boolean ammoType = true;
     public Enemies(Texture img)
@@ -144,6 +144,7 @@ public class Enemies {
                             aliens[i].alive = false;
                             dyingSound.stop();
                             dyingSound.play();
+                            GameManager.getInstance().wyciszenie();
                         }
                     }
                 }
@@ -206,12 +207,14 @@ public class Enemies {
             {
                 aliens[i].alive = false;
                 explosion.play();
+                GameManager.getInstance().wyciszenie();
             }
             break;
             case 3:
             {
                 explosion.stop();
                 explosion.play();
+                GameManager.getInstance().wyciszenie();
                 aliens[i].alive=false;
                 bullet.active=false;
                 if((i-1)>0 && (i+1)<aliens.length)

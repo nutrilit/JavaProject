@@ -1,4 +1,3 @@
-asd      16
 ola      15
 sda      14
 asd      13
@@ -13,3 +12,4 @@ mariu    34
 kama    34
 summ     8
 jeden    1
+szes    6
