@@ -88,7 +88,7 @@ public class Help {
 
         font.draw(batch, "Pause during gameplay: 'ESC' ", screenWidth / 2, screenHeight *0.68f, 0, Align.center, false);
         font.draw(batch, "Quit game: 'ESC'(double press)", screenWidth / 2, screenHeight *0.64f, 0, Align.center, false);
-        font.draw(batch, "Muted music in game: 'M'", screenWidth / 2, screenHeight *0.60f, 0, Align.center, false);
+        font.draw(batch, "Muted music in game: 'ALT_RIGHT'", screenWidth / 2, screenHeight *0.60f, 0, Align.center, false);
         float LeftImg = screenWidth * 1 / 6;
         font.setColor(Color.YELLOW); // Font color for enemies
         font.draw(batch, "Enemy Types", LeftText, screenHeight *0.56f, 0, Align.center, false);

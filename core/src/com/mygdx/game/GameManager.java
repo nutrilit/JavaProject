@@ -57,7 +57,7 @@ public class GameManager {
         return instance;
     }
 public void wyciszenie(){
-    if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+    if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
         musicMuted_in_lobby_and_game = !musicMuted_in_lobby_and_game;
     }
     if (musicMuted_in_lobby_and_game) {

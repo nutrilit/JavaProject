@@ -1,6 +1,3 @@
-kuba     19
-ola      18
-sda      17
 asd      16
 ola      15
 sda      14
@@ -13,3 +10,6 @@ sda      8
 kuba     7
 damci    0
 mariu    34
+kama    34
+summ     8
+jeden    1

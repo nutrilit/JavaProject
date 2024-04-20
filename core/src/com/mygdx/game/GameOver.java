@@ -78,16 +78,7 @@ public class GameOver {
         }
 
     }
-/*    public void zapiszWynik(int wynik) {
-        String filePath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\wynik.txt";
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-            writer.write(Integer.toString(wynik));
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
+
 private void zapiszNazweDoPliku(String playerName) {
     String filePath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\nazwa_gracza.txt";
     try {
