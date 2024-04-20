@@ -86,37 +86,38 @@ public class Help {
         font.draw(batch, "Shoot: 'SHIFT RIGHT'", rightTextX, screenHeight *0.78f, 0, Align.center, false);
         font.draw(batch, "Change bullet for player 2: 'P'", rightTextX, screenHeight *0.74f, 0, Align.center, false);
 
-        font.draw(batch, "Pause during gameplay: 'ESC' (double press)", screenWidth / 2, screenHeight *0.68f, 0, Align.center, false);
-        font.draw(batch, "Quit game: 'ESC'", screenWidth / 2, screenHeight *0.64f, 0, Align.center, false);
+        font.draw(batch, "Pause during gameplay: 'ESC' ", screenWidth / 2, screenHeight *0.68f, 0, Align.center, false);
+        font.draw(batch, "Quit game: 'ESC'(double press)", screenWidth / 2, screenHeight *0.64f, 0, Align.center, false);
+        font.draw(batch, "Muted music in game: 'M'", screenWidth / 2, screenHeight *0.60f, 0, Align.center, false);
         float LeftImg = screenWidth * 1 / 6;
         font.setColor(Color.YELLOW); // Font color for enemies
-        font.draw(batch, "Enemy Types", LeftText, screenHeight *0.60f, 0, Align.center, false);
+        font.draw(batch, "Enemy Types", LeftText, screenHeight *0.56f, 0, Align.center, false);
         font.setColor(Color.WHITE); // Reset font color
         float iconsize = 15*BufferedReader.getInstance(filepath).scale;
-        font.draw(batch, "Lvl 1:", LeftText - iconsize, screenHeight *0.45f+ (iconsize*2/3), 0, Align.center, false);
-        batch.draw(new TextureRegion(En0), LeftText, screenHeight *0.45f, iconsize, iconsize);
+        font.draw(batch, "Lvl 1:", LeftText - iconsize, screenHeight *0.41f+ (iconsize*2/3), 0, Align.center, false);
+        batch.draw(new TextureRegion(En0), LeftText, screenHeight *0.41f, iconsize, iconsize);
 
-        font.draw(batch, "Lvl 2:", LeftText - iconsize, screenHeight *0.35f+ (iconsize*2/3), 0, Align.center, false);
-        batch.draw(new TextureRegion(En1), LeftText, screenHeight *0.35f, iconsize, iconsize);
+        font.draw(batch, "Lvl 2:", LeftText - iconsize, screenHeight *0.31f+ (iconsize*2/3), 0, Align.center, false);
+        batch.draw(new TextureRegion(En1), LeftText, screenHeight *0.31f, iconsize, iconsize);
 
-        font.draw(batch, "Lvl 3:", LeftText - iconsize, screenHeight *0.25f+ (iconsize*2/3), 0, Align.center, false);
-        batch.draw(new TextureRegion(En2), LeftText, screenHeight *0.25f, iconsize, iconsize);
+        font.draw(batch, "Lvl 3:", LeftText - iconsize, screenHeight *0.21f+ (iconsize*2/3), 0, Align.center, false);
+        batch.draw(new TextureRegion(En2), LeftText, screenHeight *0.21f, iconsize, iconsize);
 
-        font.draw(batch, "Lvl 4:", LeftText - iconsize, screenHeight *0.15f+ (iconsize*2/3), 0, Align.center, false);
-        batch.draw(new TextureRegion(En3), LeftText, screenHeight *0.15f, iconsize, iconsize);
+        font.draw(batch, "Lvl 4:", LeftText - iconsize, screenHeight *0.11f+ (iconsize*2/3), 0, Align.center, false);
+        batch.draw(new TextureRegion(En3), LeftText, screenHeight *0.11f, iconsize, iconsize);
 
         font.setColor(Color.YELLOW);
-        font.draw(batch, "Bullet Types:", rightTextX, screenHeight *0.60f, 0, Align.center, false);
+        font.draw(batch, "Bullet Types:", rightTextX, screenHeight *0.54f, 0, Align.center, false);
 
         font.setColor(Color.WHITE); // Reset font color
-        font.draw(batch, "Normal Bullet:", rightTextX - (iconsize*2), screenHeight *0.45f+ (iconsize*2/3), 0, Align.center, false);
-        batch.draw(new TextureRegion(amm1), rightTextX, screenHeight *0.45f, iconsize, iconsize);
+        font.draw(batch, "Normal Bullet:", rightTextX - (iconsize*2), screenHeight *0.41f+ (iconsize*2/3), 0, Align.center, false);
+        batch.draw(new TextureRegion(amm1), rightTextX, screenHeight *0.41f, iconsize, iconsize);
 
-        font.draw(batch, "Piercing Bullet:", rightTextX -(iconsize*2), screenHeight *0.30f+ (iconsize*2/3), 0, Align.center, false);
-        batch.draw(new TextureRegion(amm2), rightTextX, screenHeight *0.30f, iconsize, iconsize);
+        font.draw(batch, "Piercing Bullet:", rightTextX -(iconsize*2), screenHeight *0.26f+ (iconsize*2/3), 0, Align.center, false);
+        batch.draw(new TextureRegion(amm2), rightTextX, screenHeight *0.26f, iconsize, iconsize);
 
-        font.draw(batch, "Cluster Bullet:", rightTextX -(iconsize*2), screenHeight *0.15f+ (iconsize*2/3), 0, Align.center, false);
-        batch.draw(new TextureRegion(amm3), rightTextX, screenHeight *0.15f, iconsize, iconsize);
+        font.draw(batch, "Cluster Bullet:", rightTextX -(iconsize*2), screenHeight *0.11f+ (iconsize*2/3), 0, Align.center, false);
+        batch.draw(new TextureRegion(amm3), rightTextX, screenHeight *0.11f, iconsize, iconsize);
 
         batch.end();
         obsluga_klaw();

@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Align;
 
@@ -21,7 +22,7 @@ public class GameManager {
     GameScreen gameScreen;
     public Music music;
     public Music gameMusic;
-    public boolean musicMuted_in_lobby = false;
+    public boolean musicMuted_in_lobby_and_game = false;
 
     public enum GameState {
         MAIN_MENU, OPTIONS, SCORE, QUIT, HELP, COPYRIGHT,STARTGAME,PAUSE,GAMEOVER;
@@ -44,7 +45,8 @@ public class GameManager {
         //music = Gdx.audio.newMusic(Gdx.files.internal("music/Familiada.mp3"));
         //music = Gdx.audio.newMusic(Gdx.files.internal("music/Brunetki.mp3"));
         //music = Gdx.audio.newMusic(Gdx.files.internal("music/cygan.mp3"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/jessica.mp3"));
+        //music = Gdx.audio.newMusic(Gdx.files.internal("music/jessica.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/mainMusic.mp3"));
         gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/WBA Free Track - Hackers.mp3"));
     }
 
@@ -54,7 +56,18 @@ public class GameManager {
         }
         return instance;
     }
-
+public void wyciszenie(){
+    if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+        musicMuted_in_lobby_and_game = !musicMuted_in_lobby_and_game;
+    }
+    if (musicMuted_in_lobby_and_game) {
+        gameMusic.setVolume(0);
+        music.setVolume(0);
+    } else {
+        gameMusic.setVolume(1);
+        music.setVolume(1);
+    }
+}
     public void render() {
 /*        if (gameMenu) {
             mainMenu.render();
@@ -67,40 +80,44 @@ public class GameManager {
         switch (gameState) {
             case MAIN_MENU:
                 mainMenu.render();
-                if (!music.isPlaying() && !musicMuted_in_lobby) {
                     music.play();
-                }
-                if (gameMusic.isPlaying()) {
                     gameMusic.stop();
-                }
+                wyciszenie();
                 break;
             case OPTIONS:
                 optionsScreen.render();
+                wyciszenie();
                 break;
             case SCORE:
                 score.render();
+                wyciszenie();
                 break;
             case QUIT:
                 break;
             case HELP:
                 help.render();
+                wyciszenie();
                 break;
             case COPYRIGHT:
                 copyRight.render();
+                wyciszenie();
                 break;
             case STARTGAME:
                 gameMusic.play();
                 music.stop();
                 gameScreen.render();
                 gameScreen.obsluga_klaw();
+                wyciszenie();
                 break;
             case PAUSE:
                 pause.render();
+                wyciszenie();
                 break;
             case GAMEOVER:
                 gameOver.render();
                 gameScreen.player.removeAllBullets();
                 gameScreen.enemies.removeallAmmo();
+                wyciszenie();
                 break;
         }
     }

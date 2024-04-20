@@ -1,15 +1,15 @@
-mariusz 1
-kuba 2
-ola11
-sda 1
-asd 2
-ola11
-sda 1
-asd 2
-ola11
-sda 1
-asd 2
-ola11
-sda 1
-kuba 3
+kuba     19
+ola      18
+sda      17
+asd      16
+ola      15
+sda      14
+asd      13
+ola      12
+sda      11
+asd      10
+ola      9
+sda      8
+kuba     7
 damci    0
+mariu    34
