@@ -18,11 +18,13 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class OptionsScreen {
     private SpriteBatch batch;
+    private int currentWidth;
+    private int currentHeight;
     private BitmapFont font;
     private OrthographicCamera camera;
 
-    private String[] resolutions = {"800x600", "1024x768", "1280x720", "1900x1080"}; // Przykładowe rozdzielczości
-    private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1080"};
+    private String[] resolutions = {"800x600", "1024x768", "1280x720", "1920x1061"}; // Przykładowe rozdzielczości
+    private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1061"};
     private String[] scale = {"3","4","4","5"};
     private int currentResolutionIndex = 0;
     private Stage stage;
@@ -63,19 +65,22 @@ public class OptionsScreen {
         batch.setProjectionMatrix(camera.combined);
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
+        currentWidth = Gdx.graphics.getWidth();
+        currentHeight = Gdx.graphics.getHeight();
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.draw(new TextureRegion(backgroundTexture), 0, 0, screenWidth, screenHeight);
         // Oblicz nowe położenie tekstu na podstawie aktualnych rozmiarów ekranu
         float textX = screenWidth / 2;
         float textY = screenHeight * 0.9f;
-        float iconsize = 15*BufferedReader.getInstance(filepath).scale;
+        float iconsize = 15 * BufferedReader.getInstance(filepath).scale;
         font.draw(batch, "Press UP/DOWN to change resolution", screenWidth / 2, screenHeight * 0.9f, 0, Align.center, false);
-        font.draw(batch, "Current Resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
-        //batch.draw(new TextureRegion(mutedIcon), screenWidth/2 , screenHeight *0.6f, iconsize, iconsize);
-        font.draw(batch, "Press M to muted music in menu ", screenWidth  *1/2, screenHeight * 0.6f+ (iconsize*2/3), 0, Align.center, false);
+        // Wyświetl aktualną rozdzielczość
+        font.draw(batch, "Current Resolution: " + currentWidth + "x" + currentHeight, screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
+        font.draw(batch, "Choose Resolution: " + resolutions[currentResolutionIndex], screenWidth / 2, screenHeight * 0.7f, 0, Align.center, false);
+        //batch.draw(new TextureRegion(mutedIcon), screenWidth / 2, screenHeight * 0.6f, iconsize, iconsize);
 
         batch.end();
 
@@ -95,6 +100,7 @@ public class OptionsScreen {
             //updateResolution(Integer.parseInt(resolutions2[currentResolutionIndex * 2]), Integer.parseInt(resolutions2[currentResolutionIndex * 2 + 1]));
         }
     }
+
 
 
 
