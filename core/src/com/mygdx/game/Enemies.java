@@ -194,6 +194,12 @@ public class Enemies {
                         ammunitions.add(ammo);
                     }
                 }
+                if(score%7==0)
+                {
+                    Texture ammoTexture = new Texture("alien.png");
+                    Ammunition ammo = new Ammunition(ammoTexture, 3, aliens[i].pos);
+                    ammunitions.add(ammo);
+                }
             }
             break;
             case 2:

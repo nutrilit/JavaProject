@@ -143,6 +143,9 @@ public class Player {
                         case 2:
                             this.ammoCluster++;
                             break;
+                        case 3:
+                            this.lives++;
+                            break;
                     }
                 }
                 ammunition.isactive=false;
