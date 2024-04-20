@@ -156,7 +156,7 @@ public class Player {
         update(Gdx.graphics.getDeltaTime());
         sprite.setPosition(pos.x, pos.y);
         sprite.draw(batch);
-        //font.draw(batch, "Type:"+this.currentWeapon, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() * 9/10, 0, Align.center, false);
+
         // Draw bullets
         for (Bullet bullet : bullets) {
             bullet.draw(batch);
