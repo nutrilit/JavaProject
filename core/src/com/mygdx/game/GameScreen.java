@@ -39,7 +39,7 @@ public class GameScreen {
     public GameScreen()
     {
         batch = new SpriteBatch();
-        playerImg = new Texture("ship.png");
+        playerImg = new Texture("Main Ship - Base - Full health.png");
         alienImg = new Texture("alien.png");
         asteroidImg = new Texture("beholder.png");
         player = new Player(playerImg,1);

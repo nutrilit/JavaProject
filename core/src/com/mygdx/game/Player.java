@@ -38,7 +38,7 @@ public class Player {
         String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
         font.getData().setScale(0.2f*BufferedReader.getInstance(filepath).scale);
         sprite = new Sprite(img);
-        sprite.setScale(2f*BufferedReader.getInstance(filepath).scale);
+        sprite.setScale(0.5f*BufferedReader.getInstance(filepath).scale);
         pos = new Vector2(Gdx.graphics.getWidth() / 2, sprite.getScaleY() * sprite.getHeight() / 2);
         bullets = new ArrayList<>(); // Initialize bullets list
         this.playerType=type;

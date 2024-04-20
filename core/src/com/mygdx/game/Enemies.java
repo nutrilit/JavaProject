@@ -196,7 +196,7 @@ public class Enemies {
                 }
                 if(score%7==0)
                 {
-                    Texture ammoTexture = new Texture("alien.png");
+                    Texture ammoTexture = new Texture("hpammo.png");
                     Ammunition ammo = new Ammunition(ammoTexture, 3, aliens[i].pos);
                     ammunitions.add(ammo);
                 }
