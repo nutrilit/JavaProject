@@ -143,6 +143,8 @@ public class Enemies {
                 if(player.lives==0)
                 {
                     GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
+                    resetEnemies();
+                    player.reset();
                 }
             }
         }
