@@ -57,8 +57,8 @@ public class Player {
                 pos.x += deltaTime * speed;
             if (pos.x - (sprite.getScaleX() * sprite.getWidth() / 2) <= 0)
                 pos.x = (sprite.getScaleY() * sprite.getHeight() / 2);
-            if (pos.x + (sprite.getScaleX() * sprite.getWidth() / 2) >= Gdx.graphics.getWidth()-(0.2*Gdx.graphics.getWidth()))
-                pos.x = (Gdx.graphics.getWidth()-(int)(0.2*Gdx.graphics.getWidth())) - (sprite.getScaleY() * sprite.getHeight() / 2);
+            if (pos.x + (sprite.getScaleX() * sprite.getWidth() / 2) >= Gdx.graphics.getWidth()-(0.24*Gdx.graphics.getWidth()))
+                pos.x = (Gdx.graphics.getWidth()-(int)(0.24*Gdx.graphics.getWidth())) - (sprite.getScaleY() * sprite.getHeight() / 2);
 
             if(Gdx.input.isKeyJustPressed(Keys.Q))
                 currentWeapon++;

@@ -65,14 +65,16 @@ public class GameManager {
             gameMusic.setVolume(0);
             music.setVolume(0);
             GameManager.getInstance().gameScreen.player.shoot.setVolume(0);
+            GameManager.getInstance().gameScreen.player2.shoot.setVolume(0);
             GameManager.getInstance().gameScreen.enemies.explosion.setVolume(0);
             GameManager.getInstance().gameScreen.enemies.dyingSound.setVolume(0);
         } else {
             gameMusic.setVolume(1);
             music.setVolume(1);
             GameManager.getInstance().gameScreen.player.shoot.setVolume(1);
+            GameManager.getInstance().gameScreen.player2.shoot.setVolume(1);
             GameManager.getInstance().gameScreen.enemies.explosion.setVolume(1);
-            GameManager.getInstance().gameScreen.enemies.dyingSound.setVolume(0);
+            GameManager.getInstance().gameScreen.enemies.dyingSound.setVolume(1);
         }
     }
     public void render() {
