@@ -20,13 +20,14 @@ public class Player {
     public Vector2 pos;
     public Sprite sprite;
     public List<Bullet> bullets;
+
     public float speed = 500;
     public int ammoPierce = 5;
     public int ammoCluster = 5;
     public float fireRate = 0.2f; // czas (w sekundach) między kolejnymi strzałami
     private float fireTimer = 0; // licznik czasu od ostatniego strzału
     private int currentWeapon;
-    private int lives=1;
+    public int lives=1;
     private  int score;
     private boolean isAlive;
     public Music shoot;
@@ -95,11 +96,14 @@ public class Player {
             }
         }
     }
+
     void reset(){
           this.ammoPierce = 5;
           this.ammoCluster = 5;
           this.lives = 3;
     }
+
+
 
     public void update(float deltaTime) {
         playerMovement(deltaTime);
@@ -107,7 +111,9 @@ public class Player {
         for (Bullet bullet : bullets) {
             bullet.update(deltaTime);
         }
+
     }
+
     public void removeBullets()
     {
         List<Bullet> bulletsToRemove = new ArrayList<>();
@@ -152,6 +158,10 @@ public class Player {
             }
         }
     }
+
+
+
+
     public void Draw(SpriteBatch batch) {
         update(Gdx.graphics.getDeltaTime());
         sprite.setPosition(pos.x, pos.y);

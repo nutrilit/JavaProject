@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import sun.jvm.hotspot.debugger.win32.coff.TestDebugInfo;
-
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +30,7 @@ public class Enemies {
     int alien_alive_amount;
     int currType=1;
     public int score=0;
+    public List<EnemyBullet> bullets1;
     Texture[] textures = new Texture[4];
     private BitmapFont font;
     public List<Ammunition> ammunitions;
@@ -37,15 +38,18 @@ public class Enemies {
     public Music explosion;
     private Texture tmptexture;
     boolean ammoType = true;
+    public boolean isactive;
+    private float enemyFireRate = 1f; // Czas (w sekundach) między kolejnymi strzałami wrogów
+    private float enemyFireTimer = 0; // Licznik czasu od ostatniego strzału wrogów
     public Enemies(Texture img)
     {
         alien_move = Vector2.Zero;
         aliens = new Alien[With_aliens*Height_aliens];
         alien_alive_amount = aliens.length;
         tmptexture = new Texture("alien.png");
-        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        String filepath = "C:\\Users\\wardusv3\\Desktop\\BANK\\JAAA\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
         space = 10*BufferedReader.getInstance(filepath).scale;
-
+        bullets1 = new ArrayList<>();
         int i=0;
         ammunitions = new ArrayList<>();
         for(int y=0; y<Height_aliens;y++)
@@ -97,6 +101,22 @@ public class Enemies {
             }
         }
     }
+    private void enemyFire(float deltaTime) {
+        enemyFireTimer += deltaTime;
+        if (enemyFireTimer >= enemyFireRate) {
+            // Wybierz losowego wroga, który będzie strzelał
+            int randomIndex = new Random().nextInt(aliens.length);
+            if (aliens[randomIndex].alive) {
+                // Stwórz nowy pocisk wroga i dodaj go do listy bullets1
+                Texture enemyBulletTexture = new Texture("bullet1.png");
+                Vector2 enemyBulletPosition = new Vector2(aliens[randomIndex].pos.x, aliens[randomIndex].pos.y - aliens[randomIndex].sprite.getHeight());
+                EnemyBullet enemyBullet = new EnemyBullet(enemyBulletTexture, enemyBulletPosition, 1);
+                bullets1.add(enemyBullet);
+
+                enemyFireTimer = 0;
+            }
+        }
+    }
     void CheckPlayerCollision(Player player)
     {
         for(int i=0;i<aliens.length;i++)
@@ -111,6 +131,24 @@ public class Enemies {
             }
         }
     }
+    public void checkEnemyDrop(Player player) {
+        for (EnemyBullet enemyBullet : bullets1) {
+            if (!enemyBullet.collidedWithPlayer && player.sprite.getBoundingRectangle().overlaps(enemyBullet.sprite.getBoundingRectangle())) {
+                // Perform actions when player collides with enemy bullet
+                // For example, decrease player lives or reset the player
+                enemyBullet.active = false;
+                enemyBullet.collidedWithPlayer = true; // Ustaw flagę, że pocisk już kolidował z graczem w tej klatce gry
+                player.lives--; // Zmniejsz liczbę żyć gracza o 1
+                if(player.lives==0)
+                {
+                    GameManager.getInstance().gameState = GameManager.GameState.GAMEOVER;
+                }
+            }
+        }
+    }
+
+
+
     void CheckEndOfMap(Player player)
     {
         for(int i=0;i<aliens.length;i++)
@@ -150,6 +188,7 @@ public class Enemies {
                 }
             }
     }
+
 
     public void removeAmmo()
     {
@@ -286,8 +325,11 @@ public class Enemies {
         }
 
     }
+
+
     public void Update(float deltaTime,SpriteBatch batch) {
         AlienMovement(deltaTime,batch);
+        enemyFire(deltaTime);
         for (Ammunition ammunition : ammunitions) {
             ammunition.Update(deltaTime);
         }
@@ -308,11 +350,15 @@ public class Enemies {
                 i++;
             }
         }
+        for (EnemyBullet bullet : bullets1) {
+            bullet.draw(batch);
+        }
         font.draw(batch, "Score: " + score, Gdx.graphics.getWidth()-(int)(Gdx.graphics.getWidth()*0.05), Gdx.graphics.getHeight() - (int)(Gdx.graphics.getHeight()*0.05), 0, Align.right, false);
         for (Ammunition ammunition : ammunitions) {
             if(ammunition.isactive==true)
                 ammunition.Draw(batch);
         }
+
     }
 
 

@@ -70,6 +70,7 @@ public class GameScreen {
         player.checkAmmoDrop(enemies.ammunitions);
         enemies.CheckPlayerCollision(player);
         enemies.CheckEndOfMap(player);
+        enemies.checkEnemyDrop(player);
         player.removeBullets();
         enemies.removeAmmo();
         asteroid.draw(batch);
@@ -80,6 +81,7 @@ public class GameScreen {
             player2.checkAmmoDrop(enemies.ammunitions);
             enemies.CheckPlayerCollision(player2);
             enemies.CheckEndOfMap(player2);
+
         }
         System.out.println(player.ammoPierce);
         enemies.Draw(batch);
