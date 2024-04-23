@@ -45,7 +45,7 @@ public class Asteroid {
                 if (speed > 0) {
                     position.x = -width;
                 } else {
-                    position.x = Gdx.graphics.getWidth();
+                    position.x = 0.74f * Gdx.graphics.getWidth();
                 }
             }
             return;
@@ -53,10 +53,17 @@ public class Asteroid {
         position.x += speed * deltaTime * 3;
 
 
-        if ((speed > 0 && position.x > Gdx.graphics.getWidth()) || (speed < 0 && position.x < -width)) {
+        if ((speed > 0 && position.x >= 0.74f * Gdx.graphics.getWidth())) {
+            position.x = -width;
+            timeUntilRespawn = generateRandomRespawnTime();
+        }
+        if((speed < 0 && position.x < -width))
+        {
+            position.x = -width;
             timeUntilRespawn = generateRandomRespawnTime();
         }
     }
+
     private float generateRandomRespawnTime() {
         return random.nextFloat() * (respawnTimeMax - respawnTimeMin) + respawnTimeMin;
     }

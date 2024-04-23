@@ -148,7 +148,27 @@ public class Enemies {
         }
     }
 
+    public void removeBullets()
+    {
+        List<EnemyBullet> bulletsToRemove = new ArrayList<>();
 
+        for (EnemyBullet bullet : bullets1) {
+            if (bullet.position.y >= Gdx.graphics.getWidth()) {
+                bulletsToRemove.add(bullet);
+            }
+        }
+        bullets1.removeAll(bulletsToRemove);
+    }
+    public void removeAllBullets()
+    {
+        List<EnemyBullet> bulletsToRemove = new ArrayList<>();
+
+        for (EnemyBullet bullet : bullets1) {
+            bulletsToRemove.add(bullet);
+
+        }
+        bullets1.removeAll(bulletsToRemove);
+    }
 
     void CheckEndOfMap(Player player)
     {

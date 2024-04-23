@@ -127,6 +127,7 @@ public class GameManager {
             case GAMEOVER:
                 gameOver.render();
                 gameScreen.player.removeAllBullets();
+                gameScreen.enemies.removeBullets();
                 gameScreen.enemies.removeallAmmo();
                 wyciszenie();
                 break;
