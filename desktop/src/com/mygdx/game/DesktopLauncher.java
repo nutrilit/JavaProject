@@ -8,7 +8,7 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Space Invaders");
-		String filePath = "C:\\Users\\wardusv3\\Desktop\\BANK\\JAAA\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+		String filePath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
 		BufferedReader bf = new BufferedReader(filePath);
 		if (!bf.optionList.isEmpty()) {
 			int firstOption = bf.optionList.get(0);

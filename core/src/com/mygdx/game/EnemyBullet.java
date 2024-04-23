@@ -10,15 +10,15 @@ public class EnemyBullet {
     public Sprite sprite;
     public Vector2 position;
     public boolean active;
-    private float speed = 250; // Prędkość pocisku
+    private float speed = 500; // Prędkość pocisku
     public int type;
     int scale = 2;
     public boolean collidedWithPlayer = false;
 
     public EnemyBullet(Texture texture, Vector2 position,int type) {
         this.sprite = new Sprite(texture);
-        String filepath = "C:\\Users\\panon\\Desktop\\java_zespolowy\\NOWYYYY\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
-        sprite.setScale(BufferedReader.getInstance(filepath).scale);
+        String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
+        sprite.setScale(0.20f*BufferedReader.getInstance(filepath).scale);
         this.position = position;
         this.active = true;
         this.type=type;

@@ -49,7 +49,7 @@ public class GameManager {
         //music = Gdx.audio.newMusic(Gdx.files.internal("music/Brunetki.mp3"));
         //music = Gdx.audio.newMusic(Gdx.files.internal("music/cygan.mp3"));
         //music = Gdx.audio.newMusic(Gdx.files.internal("music/jessica.mp3"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/mainMusic.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/yt1s.com_-_Arcade_Game_Menu_Music_Loop_Sound_Effect_8Bit_Style.mp3"));
         gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/WBA Free Track - Hackers.mp3"));
     }
 

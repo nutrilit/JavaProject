@@ -109,7 +109,7 @@ public class Enemies {
             int randomIndex = new Random().nextInt(aliens.length);
             if (aliens[randomIndex].alive) {
                 // Stwórz nowy pocisk wroga i dodaj go do listy bullets1
-                Texture enemyBulletTexture = new Texture("bullet1.png");
+                Texture enemyBulletTexture = new Texture("enemybullet.png");
                 Vector2 enemyBulletPosition = new Vector2(aliens[randomIndex].pos.x, aliens[randomIndex].pos.y - aliens[randomIndex].sprite.getHeight());
                 EnemyBullet enemyBullet = new EnemyBullet(enemyBulletTexture, enemyBulletPosition, 1);
                 bullets1.add(enemyBullet);
