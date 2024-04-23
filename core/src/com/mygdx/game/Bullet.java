@@ -17,7 +17,7 @@ public class Bullet {
     public Bullet(Texture texture, Vector2 position,int type) {
         this.sprite = new Sprite(texture);
         String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
-        sprite.setScale(BufferedReader.getInstance(filepath).scale);
+        sprite.setScale(0.20f*BufferedReader.getInstance(filepath).scale);
         this.position = position;
         this.active = true;
         this.type=type;

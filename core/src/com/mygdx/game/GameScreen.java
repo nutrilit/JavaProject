@@ -42,7 +42,7 @@ public class GameScreen {
         batch = new SpriteBatch();
         playerImg = new Texture("Main Ship - Base - Full health.png");
         alienImg = new Texture("alien.png");
-        asteroidImg = new Texture("beholder.png");
+        asteroidImg = new Texture("kometa.png");
         player = new Player(playerImg,1);
         player2 = new Player(playerImg,2);
         asteroid = new Asteroid(asteroidImg,true,Gdx.graphics.getHeight() * 0.5f);

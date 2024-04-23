@@ -44,7 +44,7 @@ public class Enemies {
         alien_alive_amount = aliens.length;
         tmptexture = new Texture("alien.png");
         String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
-        space = 10*BufferedReader.getInstance(filepath).scale;
+        space = 15*BufferedReader.getInstance(filepath).scale;
 
         int i=0;
         ammunitions = new ArrayList<>();
@@ -131,7 +131,7 @@ public class Enemies {
                 {
                     if(bullet.sprite.getBoundingRectangle().overlaps(aliens[i].sprite.getBoundingRectangle()))
                     {
-                    /*for(int ii=0;ii<aliens.length;ii++) //zabijanie wszyskich
+/*                    for(int ii=0;ii<aliens.length;ii++) //zabijanie wszyskich
                         aliens[ii].alive=false;*/
                                 /*Texture ammoTexture = new Texture("pierce_ammo.png");
                                 Ammunition ammo = new Ammunition(ammoTexture, 1, aliens[i].pos);
