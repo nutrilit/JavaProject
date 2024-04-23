@@ -19,7 +19,7 @@ public class Alien {
         posInit = pos;
         sprite = new Sprite(alien);
         String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
-        sprite.setScale(BufferedReader.getInstance(filepath).scale);
+        sprite.setScale(0.35f*BufferedReader.getInstance(filepath).scale);
         this.alive = true;
         type=type;
         switch (type){

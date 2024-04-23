@@ -23,7 +23,7 @@ public class Asteroid {
         this.texture = texture;
         this.sprite =  new Sprite(texture);
         String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
-        sprite.setScale(BufferedReader.getInstance(filepath).scale);
+        sprite.setScale(0.5f*BufferedReader.getInstance(filepath).scale);
         width = 50;
         height = 50;
 
