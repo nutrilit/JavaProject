@@ -69,7 +69,7 @@ public class Enemies {
         font = new BitmapFont(Gdx.files.internal("font/myfont.fnt"), false);
         font.setColor(Color.WHITE);
         font.getData().setScale(0.2f*BufferedReader.getInstance(filepath).scale);
-        dyingSound = Gdx.audio.newMusic(Gdx.files.internal("music/lego-yoda-death-sound-effect.mp3"));
+        dyingSound = Gdx.audio.newMusic(Gdx.files.internal("music/Something being hit - Sound Effect.mp3"));
         explosion = Gdx.audio.newMusic(Gdx.files.internal("music/mixkit-arcade-game-explosion-1699.wav"));
     }
     void resetEnemies()
@@ -237,7 +237,7 @@ public class Enemies {
                 }
                 if(score%7==0)
                 {
-                    Texture ammoTexture = new Texture("hpammo.png");
+                    Texture ammoTexture = new Texture("extra_life.png");
                     Ammunition ammo = new Ammunition(ammoTexture, 3, aliens[i].pos);
                     ammunitions.add(ammo);
                 }
