@@ -42,6 +42,7 @@ public class Pause {
             GameManager.getInstance().gameScreen.enemies.resetEnemies();
             GameManager.getInstance().gameScreen.enemies.removeallAmmo();
             GameManager.getInstance().gameScreen.player.removeAllBullets();
+            GameManager.getInstance().gameScreen.enemies.removeAllBullets();
             GameManager.getInstance().gameScreen.player.reset();
             GameManager.getInstance().gameScreen.player2.reset();
             GameManager.getInstance().gameScreen.enemies.score = 0;

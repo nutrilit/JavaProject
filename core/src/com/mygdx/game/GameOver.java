@@ -72,7 +72,7 @@ public class GameOver {
             GameManager.getInstance().gameState = GameManager.GameState.MAIN_MENU;
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            GameManager.getInstance().gameState = GameManager.GameState.STARTGAME;
+            GameManager.getInstance().gameState = GameManager.GameState.MAIN_MENU;
             String playerName = nameField.getText();
             zapiszNazweDoPliku(playerName);
         }

@@ -23,8 +23,8 @@ public class OptionsScreen {
     private BitmapFont font;
     private OrthographicCamera camera;
 
-    private String[] resolutions = {"800x600", "1024x768", "1280x720", "1920x1061"}; // Przykładowe rozdzielczości
-    private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1061"};
+    private String[] resolutions = {"800x600", "1024x768", "1280x720", "1920x1080"}; // Przykładowe rozdzielczości
+    private String[] resolutions2 = {"800", "600", "1024", "768", "1280", "720", "1920", "1080"};
     private String[] scale = {"3","4","4","5"};
     private int currentResolutionIndex = 0;
     private Stage stage;
