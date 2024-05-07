@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
-import sun.jvm.hotspot.debugger.win32.coff.TestDebugInfo;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;

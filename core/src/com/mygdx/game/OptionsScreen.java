@@ -28,7 +28,7 @@ public class OptionsScreen {
     private String[] scale = {"3","4","4","5"};
     private int currentResolutionIndex = 0;
     private Stage stage;
-    private Texture backgroundTexture,mutedIcon, not;
+    private Texture backgroundTexture;
     String filepath = "C:\\JavaProject\\core\\src\\com\\mygdx\\game\\Options.txt";
     public OptionsScreen() {
         batch = new SpriteBatch();
@@ -38,7 +38,7 @@ public class OptionsScreen {
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false);
         backgroundTexture = new Texture("optionsTlo.png");
-        mutedIcon = new Texture("mutedicon.png");
+       // mutedIcon = new Texture("mutedicon.png");
     }
     public void updateResolution(int width, int height) {
         Gdx.graphics.setWindowedMode(width, height);
