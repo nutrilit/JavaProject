@@ -134,6 +134,8 @@ private void zapiszNazweDoPliku(String playerName) {
         batch.draw(new TextureRegion(backgroundTexture), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         font.draw(batch, "Game Over", screenWidth / 2, screenHeight * 0.8f, 0, Align.center, false);
         font.draw(batch, "Click on the text field to enter your nickname", screenWidth / 2, screenHeight * 0.7f, 0, Align.center, false);
+        GameManager.getInstance().gameScreen.player2.reset();
+        GameManager.getInstance().gameScreen.player.reset();
 
         batch.end();
         obsluga_klaw();
